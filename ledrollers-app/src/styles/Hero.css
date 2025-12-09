@@ -1,13 +1,167 @@
 .hero-section {
-    position:relative;
     width:100%;
-    min-height: 100vh;
-    background: radial-gradient(circle at top center, #1b2845 20%, #050510 80%);
+    position: relative;
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: center;
     overflow: hidden;
-    padding: 100px 20px 40px;
-    color:#050510;
+    padding-top: 70px;
+    color:rgb(0, 0, 0);
 }
 
+.hero-background {
+    position:absolute;
+    background: radial-gradient(circle, rgba(11, 191, 201, 0.15), transparent 70%);
+    filter: blur(40px);
+    z-index: 0;
+}
+
+.hero-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    gap:2rem;
+    z-index: 2;
+}
+
+.hero-text-content {
+    text-align: center;
+    max-width: 330px;
+    order:0;
+}
+
+.hero-title {
+    color:#2d1466;
+    font-size: 1.8rem;
+    line-height: 1.9rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: slideDown 0.9s ease-out forwards;
+}
+
+.text-highlight {
+    color: #2f286e;
+    text-shadow: 0 0 20px rgba(6, 159, 167, 0.7);
+}
+
+.hero-image-content {
+    position:relative;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    order: 1;
+    width: 100%;
+    max-width: 500px;
+    margin-top:20px;
+}
+
+.main-image {
+    width: 120%;
+    position: relative;
+    z-index: 2;
+    animation: float 4s ease-in-out infinite;
+}
+
+.image-glow {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(150deg, rgba(86, 0, 107, 0.4), rgba(3, 32, 34, 0.4));
+    filter: blur(100px);
+    z-index: 1;
+    border-radius: 50%;
+}
+
+
+.hero-buttons {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 1.2rem;
+    opacity: 0;
+    animation: slideUp 0.9s ease-out 0.6s forwards;
+}
+
+.btn {
+    width: 100%;
+    border-radius: 40px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+}
+
+.btn-products, .btn-about {
+   box-shadow: 0 0 12px rgba(11, 191, 201, 0.15);
+   color:white;
+   background: linear-gradient(90deg, #41446f, #47629b);
+}
+
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+@media (min-width: 992px) {
+    .hero-content-wrapper {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .hero-text-content {
+        order: 1; 
+        text-align: left;
+        align-items: flex-start;
+        width: 50%;
+        padding-right: 2rem;
+    }
+
+    .hero-image-content {
+        order: 2;
+        width: 50%;
+        justify-content: flex-end;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+    }
+
+    .hero-buttons {
+        flex-direction: row;
+        width: auto;
+    }
+}

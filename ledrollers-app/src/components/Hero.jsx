@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import "../styles/Hero.css";
 
-import heroImage from "../assets/hero-image.jpeg";
+import heroImage from "../assets/light_up_shoes.png";
 
 const Hero = () => {
     return (
@@ -11,27 +11,26 @@ const Hero = () => {
             <div className="hero-content-wrapper">
                 <div className="hero-text-content">
                     <h1 className="hero-title">
-                        Открий магията на светещите маратонки!
+                        Открий магията на <br />
+                        <span className="text-highlight">светещите</span> маратонки с колелца!
                     </h1>
-                    <p className="hero-description">
-                        Най-новите светещи маратонки с колелца са тук, за да осветят всяка твоя стъпка. 
-                    </p>
+
+                    <div className="hero-image-content">
+                    <div className="image-glow"></div>
+                    <img src={heroImage} alt="Светещи маратонки с колелца" className="main-image"/>
+
+                    </div>
+  
                     <div className="hero-buttons">
-                        <Link to="/products" className="btn btn-primary">
+                        <Link to="/products" className="btn btn-products">
                            Разгледай нашите модели
                         </Link>
-                        <Link to="/about" className="btn btn-secondary">
-                           Научи повече за нас
+                        <Link to="/about" className="btn btn-about">
+                           Научи повече
                         </Link>
                     </div>
                 </div>
 
-                <div className="hero-image-content">
-                    <div className="image-glow"></div>
-                    <img src={heroImage} alt="Светещи маратонки с колелца" className="main-image"/>
-
-                    <div className="image-mask"></div>
-                </div>
             </div>
         </section>
 
