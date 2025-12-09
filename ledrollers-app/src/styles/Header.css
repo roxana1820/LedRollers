@@ -1,0 +1,130 @@
+.header {
+    background-color: rgba(35, 10, 111, 0.619);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(11, 191, 201, 0.2);
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:0.8rem 1.5rem;
+}
+
+.nav {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;/*for absolute positioning of navList*/
+}
+
+.ledrollers-logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color:hsl(230, 54%, 31%);
+    text-shadow: 0 0 10px #131841;
+    letter-spacing: 1px;
+    text-decoration: none;
+    z-index: 1001;
+}
+
+.menu-icon {
+   position: absolute;
+   left:0;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   width: 30px;
+   height: 22px;
+   cursor: pointer;
+   z-index: 2002;
+}
+
+.menu-icon .bar {
+    height: 4px;
+    width: 70%;
+    background-color: #131841;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.menu-icon .bar.active:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+    background-color: #fff;
+}
+
+.menu-icon .bar.active:nth-child(2) {
+    opacity:0;
+}
+
+.menu-icon .bar.active:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+    background-color: #fff;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(3px); 
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1999;
+
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.navList {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 70%;
+    max-width: 300px;
+    background: linear-gradient(180deg, #1a0f35 0%, #162447 100%);
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    padding-left: 20px;
+    padding-right: 20px;
+    list-style: none;
+
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.3,0,0.2,1);
+    box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+
+    z-index: 2000;
+}
+
+.navList.open {
+    transform: translateX(0);
+}
+
+.menu-header {
+    font-size: 1.3rem;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.navLink {
+    display: block;
+    color:#ffff;
+    text-decoration: none;
+    font-size:1rem;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.navLink:hover {
+    color:#1a0f35;
+    padding-left: 10px;
+}
