@@ -6,8 +6,6 @@ import heroImage from "../assets/light_up_shoes.png";
 const Hero = () => {
     return (
         <section className="hero-section">
-            <div className="hero-background"></div>
-
             <div className="hero-content-wrapper">
                 <div className="hero-text-content">
                     <h1 className="hero-title">

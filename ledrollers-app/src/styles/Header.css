@@ -1,11 +1,11 @@
 .header {
-    background-color: rgba(73, 64, 192, 0.619);
-    backdrop-filter: blur(10px);
+    background: rgba(207, 173, 235, 0.6);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
     position:fixed;
     top:0;
     left:0;
     width:100%;
-    padding:0.8rem 1.5rem;
+    padding: 10px;
     z-index: 5000;
 }
 
@@ -17,9 +17,9 @@
 }
 
 .ledrollers-logo {
-    font-size: 2.1rem;
+    font-size: 2.2rem;
     font-weight: bold;
-    color:hsl(230, 70%, 23%);
+    color:hsl(272, 75%, 32%);
     text-shadow: 0 0 10px #131841;
     letter-spacing: 1px;
     text-decoration: none;
@@ -97,7 +97,6 @@
     transform: translateX(-100%);
     transition: transform 0.3s cubic-bezier(0.3,0,0.2,1);
     box-shadow: 5px 0 15px rgba(0,0,0,0.5);
-
     z-index: 2000;
 }
 

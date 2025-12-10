@@ -1,13 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap');
+
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   color: #d9e2ea;
   background-color: #ffffff; 
 }
 
-body {
+html , body {
   margin: 0;
   padding: 0;
-  background-color: #ffffff; 
+  min-height: 100vh;
+  background: linear-gradient(
+    180deg, 
+    #f0ebf6 0%,  
+    #ebcde9 50%,  
+    #bb93cf 100% 
+  );
 }
 
 #root {
