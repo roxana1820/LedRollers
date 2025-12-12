@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import './styles/globals.css';
+import Benefits from './components/Benefits';
 
 function App() {
   return (
@@ -13,11 +14,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Hero/>}/>
         </Routes>
+        <Benefits />
       </div>
     </Router>
   );
 }
-
 
 
 const rootEl = document.getElementById('root');
