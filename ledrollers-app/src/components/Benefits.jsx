@@ -2,6 +2,8 @@ import shoeImage1 from "../assets/benefit_shoe.png";
 import safetyImage from "../assets/benefit_safety.png";
 import chargingImage from "../assets/benefit_charge.png";
 import '../styles/Benefits.css';
+
+
 const Benefits = () => {
 
         const benefits = [

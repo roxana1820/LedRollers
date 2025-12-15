@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import './styles/globals.css';
 import Benefits from './components/Benefits';
+import FeaturedProducts from './components/FeaturedProducts';
 
 function App() {
   return (
@@ -13,8 +14,10 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Hero/>}/>
+          <Route path="/products" element={<FeaturedProducts/>}/>
         </Routes>
         <Benefits />
+        <FeaturedProducts/>
       </div>
     </Router>
   );

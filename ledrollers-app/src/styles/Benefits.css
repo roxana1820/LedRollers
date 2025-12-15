@@ -15,7 +15,7 @@
     color:rgb(41, 27, 54);
     text-shadow: 0 0 20px rgba(115, 10, 207, 0.3);
     opacity: 0;
-    animation: slideInFromLeft 2s cubic-bezier(0.2,0.8,0.2,1) forwards;
+    animation: slideInFromLeft 3s cubic-bezier(0.2,0.8,0.2,1) forwards;
 
 }
 
