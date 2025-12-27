@@ -13,9 +13,9 @@ html , body {
   min-height: 100vh;
   background: linear-gradient(
     180deg, 
-    #f0ebf6 0%,  
-    #ebcde9 50%,  
-    #dac4e5 100% 
+    #f0edf3 0%,  
+    #f1def0 50%,  
+    #ebe2f0 100% 
   );
 }
 

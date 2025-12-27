@@ -11,22 +11,22 @@ const FeaturedProducts = () => {
             id: 1,
             image: whiteShoes,
             name: "Светещи бели ролери",
-            oldPrice: "75.00 лв.",
-            price: "68.00 лв. / 34.77 €"
+            oldPrice: "83.00 лв.",
+            price: "75.00 лв. / 34.77 €"
         },
         {
             id: 2,
             image: pinkShoes,
             name: "Светещи розови ролери",
-            oldPrice: "75.00 лв.",
-            price: "68.00 лв. / 34.77 €"
+            oldPrice: "83.00 лв.",
+            price: "75.00 лв. / 34.77 €"
         },
         {
             id: 3,
             image: blackShoes,
             name: "Светещи черни ролери",
-            oldPrice: "75.00 лв.",
-            price: "68.00 лв. / 34.77 €"
+            oldPrice: "83.00 лв.",
+            price: "75.00 лв. / 34.77 €"
         }
     ];
 
@@ -35,7 +35,9 @@ const FeaturedProducts = () => {
     const previousProduct = () => {
        
         if (currentIndex === 0) {
-            setCurrentIndex(products.length - 1);
+           setCurrentIndex(products.length - 1);
+        }
+        else {
             setCurrentIndex(currentIndex - 1);
         }
     }
