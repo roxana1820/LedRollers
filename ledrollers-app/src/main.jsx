@@ -6,7 +6,7 @@ import Hero from './components/Hero';
 import './styles/globals.css';
 import Benefits from './components/Benefits';
 import FeaturedProducts from './components/FeaturedProducts';
-
+import MediaGallery from './components/MediaGallery';
 function App() {
   return (
     <Router>
@@ -18,6 +18,7 @@ function App() {
         </Routes>
         <Benefits />
         <FeaturedProducts/>
+        <MediaGallery/>
       </div>
     </Router>
   );
