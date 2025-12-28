@@ -12,12 +12,11 @@ function App() {
     <Router>
       <div className="app-content">
         <Header />
+        <Hero />
+        <Benefits />
         <Routes>
-          <Route path="/" element={<Hero/>}/>
           <Route path="/products" element={<FeaturedProducts/>}/>
         </Routes>
-        <Benefits />
-        <FeaturedProducts/>
         <MediaGallery/>
       </div>
     </Router>
