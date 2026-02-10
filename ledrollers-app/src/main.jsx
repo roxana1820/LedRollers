@@ -7,6 +7,7 @@ import './styles/globals.css';
 import Benefits from './components/Benefits';
 import FeaturedProducts from './components/FeaturedProducts';
 import MediaGallery from './components/MediaGallery';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -19,7 +20,9 @@ function App() {
         <Routes>
           <Route path="/products" element={<FeaturedProducts/>}/>
         </Routes>
+        <FeaturedProducts/>
         <MediaGallery/>
+        <Footer />
       </div>
     </Router>
   );

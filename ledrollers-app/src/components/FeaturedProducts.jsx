@@ -66,7 +66,7 @@ const FeaturedProducts = () => {
 
                 <div className="slider-window">
                     <div  className="slider-track" 
-                        style={{ transform: `translateX(-${currentIndex * 80}%)` }}
+                        style={{ transform: `translateX(-${currentIndex * 85}%)` }}
                     >
                         {products.map((product) => (
                             <div className="product-card" key={product.id}>

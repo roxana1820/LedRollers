@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 import "../styles/MediaGallery.css";
 
 import presentShoes from "../assets/present_shoes.MP4";
-import whiteShoes from "../assets/white_shoes2.png";
-import pinkShoes from "../assets/pink_shoes2.png";
 import blackShoes from "../assets/black_shoes2.png";
-import pinkShoes4 from "../assets/pink_shoes44.png";
+import pinkShoes44 from "../assets/pink_shoes44.png";
 import whiteShoes4 from "../assets/white_shoes4.png";
+import pinkShoes4 from "../assets/pink_shoes4.jpeg";
+import blueShoes4 from "../assets/blue_shoes4.jpeg";
 
 const MediaGallery = () => {
 
@@ -16,36 +16,13 @@ const MediaGallery = () => {
         text: "Разгледай"
     };
 
-    const twoWheelsItems = [
-        {
-            id: 2,
-            src: whiteShoes,
-            alt: "Бял модел с 2 колелца",
-            linkTo: '/products/white_shoes2',
-            text: "Разгледай модела"
-        },
-        {
-            id: 3,
-            src: pinkShoes,
-            alt: "Розови модели с 2 колелца",
-            linkTo: '/product/pink_shoes2',
-            text: "Розов модел (2 колелца)"
-        },
-        {
-            id: 4,
-            src: blackShoes,
-            alt: "Черни модели с 2 колелца",
-            linkTo: '/product/black_shoes2',
-            text: "Черен модел (2 колелца)"
-        }
-    ];
    
     const fourWheelItems = [
         {
             id: 5,
-            src: pinkShoes4, 
+            src: pinkShoes44, 
             alt: "Розови с 4 колелца",
-            linkTo: '/product/pink_shoes44',
+            linkTo: '/product/pink_shoes4',
             text: "Розов модел (4 колелца)"
         },
         {
@@ -54,7 +31,22 @@ const MediaGallery = () => {
             alt: "Бели с 4 колелца",
             linkTo: '/product/white_shoes4',
             text: "Бял модел (4 колелца)"
+        },
+        {
+            id: 7,
+            src: pinkShoes4,
+            alt: "Нови розови с 4 колелца",
+            linkTo: '/product/black_shoes4',
+            text: "Черен модел (4 колелца)"
+        },
+        {
+            id: 8,
+            src: blueShoes4,
+            alt: "Сини с 4 колелца",
+            linkTo: '/product/blue_shoes4',
+            text: "Син модел (4 колелца)"
         }
+
     ];
 
     return (
@@ -80,7 +72,7 @@ const MediaGallery = () => {
         </div>
          
         {/* Two-Wheel Items */}
-        <h4 className="category-title">Модели с 2 колелца</h4>
+        {/*<h4 className="category-title">Модели с 2 колелца</h4>
         <div className="gallery-grid">
             {twoWheelsItems.map((item) => (
                 <Link to={item.linkTo} key={item.id} className="gallery-item">
@@ -92,7 +84,7 @@ const MediaGallery = () => {
                     </div>
                 </Link>
             ))}
-        </div>
+        </div>*/}
 
         {/* Four-Wheel Items */}
         <h4 className="category-title">Модели с 4 колелца</h4>
