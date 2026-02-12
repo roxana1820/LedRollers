@@ -85,9 +85,10 @@
     top: 0;
     left: 0;
     height: 100vh;
+    gap:0;
     width: 70%;
     max-width: 300px;
-    background: linear-gradient(180deg, #1a0f35 0%, #504488 100%);
+    background: linear-gradient(180deg, #211443 0%, #504488 100%);
     display: flex;
     flex-direction: column;
     padding-top: 80px;
@@ -117,12 +118,96 @@
     display: block;
     color:#ffff;
     text-decoration: none;
-    font-size:1.1rem;
+    cursor: pointer;
+    font-size:1.3rem;
     padding: 1rem 0;
     transition: all 0.3s ease;
 }
 
 .navLink:hover {
-    color:#1a0f35;
-    padding-left: 10px;
+    padding-left: 20px;
+}
+
+.subMenu {
+    list-style: none;
+    padding-left: 1rem;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    max-height: 0;
+    overflow: hidden;
+    cursor:pointer;
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: 
+        max-height 0.4s ease,
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.subMenu.open {
+    max-height: 500px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.subMenu .subNavLink {
+    display: block;
+    color: #f7e6e6;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 1.1rem 0rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.subMenu .subNavLink::after {
+    content: '\25BC'; 
+    position: absolute;
+    right: 5px;
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.subMenu .subNavLink:hover::after {
+    transform: rotate(180deg); 
+}
+
+.subSubMenu {
+    list-style: none;
+    padding-left: 1.5rem;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    max-height: 0;/**/
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: 
+        max-height 0.4s ease,
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+.subSubMenu.open {
+    max-height: 500px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.subSubMenu .subSubNavLink {
+    display: block;
+    color: #f3e8e8;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.subSubMenu .subSubNavLink:hover {
+    background: rgba(255, 255, 255, 0.2);
+    padding-left: 1rem;
 }
