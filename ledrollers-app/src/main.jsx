@@ -8,25 +8,39 @@ import Benefits from './components/Benefits';
 import FeaturedProducts from './components/FeaturedProducts';
 import MediaGallery from './components/MediaGallery';
 import Footer from './components/Footer';
-
+import ProductDetails from './components/ProductDetails';
 
 function App() {
   return (
     <Router>
       <div className="app-content">
         <Header />
-        <Hero />
-        <Benefits />
+
         <Routes>
-          <Route path="/products" element={<FeaturedProducts/>}/>
+          <Route 
+            path="/" 
+            element={
+              <>
+                <Hero />
+                <Benefits />
+                <FeaturedProducts />
+                <MediaGallery />
+              </>
+            } 
+          />
+
+          <Route 
+            path="/productdetails/:productId" 
+            element={<ProductDetails />} 
+          />
         </Routes>
-        <FeaturedProducts/>
-        <MediaGallery/>
+
         <Footer />
       </div>
     </Router>
   );
 }
+
 
 
 const rootEl = document.getElementById('root');

@@ -20,7 +20,7 @@ const Hero = () => {
                     </div>
   
                     <div className="hero-buttons">
-                        <Link to="/products" className="btn btn-products">
+                        <Link to="/productdetails/1" className="btn btn-products">
                            Разгледай нашите модели
                         </Link>
                         <Link to="/about" className="btn btn-about">
