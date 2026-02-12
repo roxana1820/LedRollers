@@ -4,6 +4,8 @@ import "../styles/FeaturedProducts.css";
 import whiteShoes from "../assets/white_shoes.png";
 import pinkShoes from "../assets/pink_shoes.png";
 import blackShoes from "../assets/black_shoes.png";
+import pinkShoes4 from "../assets/pink_shoes4.jpeg";
+import blueShoes4 from "../assets/blue_shoes4.jpeg";
 
 const FeaturedProducts = () => {
     const products = [
@@ -11,22 +13,36 @@ const FeaturedProducts = () => {
             id: 1,
             image: whiteShoes,
             name: "Светещи бели ролери",
-            oldPrice: "83.00 лв.",
-            price: "75.00 лв. / 34.77 €"
+            oldPrice: "47.00 €.",
+            price: "38.00 €"
         },
         {
             id: 2,
             image: pinkShoes,
             name: "Светещи розови ролери",
-            oldPrice: "83.00 лв.",
-            price: "75.00 лв. / 34.77 €"
+            oldPrice: "47.00 €.",
+            price: "38.00 €"
         },
         {
             id: 3,
             image: blackShoes,
             name: "Светещи черни ролери",
-            oldPrice: "83.00 лв.",
-            price: "75.00 лв. / 34.77 €"
+            oldPrice: "47.00 €.",
+            price: "38.00 €"
+        },
+        {
+            id: 4,
+            image: pinkShoes4,
+            name: "Светещи розови ролери - нов модел",
+            oldPrice: "65.00 €.",
+            price: "60.00 €"
+        },
+        {
+            id: 5,
+            image: blueShoes4,
+            name: "Светещи сини ролери - нов модел",
+            oldPrice: "65.00 €.",
+            price: "60.00 €"
         }
     ];
 
@@ -66,7 +82,7 @@ const FeaturedProducts = () => {
 
                 <div className="slider-window">
                     <div  className="slider-track" 
-                        style={{ transform: `translateX(-${currentIndex * 85}%)` }}
+                        style={{ transform: `translateX(-${currentIndex * 90}%)` }}
                     >
                         {products.map((product) => (
                             <div className="product-card" key={product.id}>
