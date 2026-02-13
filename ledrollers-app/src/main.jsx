@@ -8,14 +8,13 @@ import Benefits from './components/Benefits';
 import FeaturedProducts from './components/FeaturedProducts';
 import MediaGallery from './components/MediaGallery';
 import Footer from './components/Footer';
-import ProductDetails from './components/ProductDetails';
+import Products from './components/Products';
 
 function App() {
   return (
     <Router>
       <div className="app-content">
-        <Header />
-
+        <Header /> 
         <Routes>
           <Route 
             path="/" 
@@ -30,11 +29,10 @@ function App() {
           />
 
           <Route 
-            path="/productdetails/:productId" 
-            element={<ProductDetails />} 
+            path="/products/:productId" 
+            element={<Products />} 
           />
         </Routes>
-
         <Footer />
       </div>
     </Router>
