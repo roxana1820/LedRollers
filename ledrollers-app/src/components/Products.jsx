@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import "../styles/Products.css";
 
 import whiteShoes from "../assets/white_shoes.png";
@@ -10,7 +10,7 @@ import blueShoes4 from "../assets/blue_shoes4.jpeg";
 const products = [
   {
     id: 1,
-    name: "Светещи бели ролери",
+    name: "Светещи розови ролери",
     price: "38.00 € ",
     oldPrice: "47.00 €",
     image: pinkShoes4,
@@ -25,7 +25,7 @@ const products = [
   },
   {
     id: 3,
-    name: "Светещо сини ролери",
+    name: "Светещи сини ролери",
     price: "38.00 € ",
     oldPrice: "47.00 €",
     image:blueShoes4,
@@ -49,9 +49,29 @@ const products = [
 ];
 
 export default function Products() {
+  useEffect(() => {
+    const cards = document.querySelectorAll('.product-card');
+    if (!cards || cards.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    cards.forEach((c) => observer.observe(c));
+    return () => observer.disconnect();
+  }, []);
   return (
     <div className="shop">
       <div className="shop-container">
+        
         
         <div className="top-bar">
           <button className="filter-btn">Филтри ⬇</button>
@@ -64,9 +84,12 @@ export default function Products() {
         </div>
 
         <div className="product-grid">
-          {products.map((product) => (
-            <div key={product.id} className="product-card">
-              
+          {products.map((product, index) => (
+            <div
+              key={product.id}
+              className="product-card"
+              style={{ '--i': index }}
+            >
               {product.isNew && <span className="badge">Ново</span>}
 
               <img src={product.image} alt={product.name} />

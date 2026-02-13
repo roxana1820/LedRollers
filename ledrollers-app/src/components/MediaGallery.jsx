@@ -34,15 +34,22 @@ const MediaGallery = () => {
         },
         {
             id: 7,
+            src: blackShoes,
+            alt: "Черни с 4 колелца",
+            linkTo: '/product/black_shoes4',
+            text: "Черен модел (4 колелца)"
+        },
+        {
+            id: 8,
             src: pinkShoes4,
             alt: "Нови розови с 4 колелца",
             linkTo: '/product/black_shoes4',
             text: "Черен модел (4 колелца)"
         },
         {
-            id: 8,
+            id: 9,
             src: blueShoes4,
-            alt: "Сини с 4 колелца",
+            alt: "Нови Сини с 4 колелца",
             linkTo: '/product/blue_shoes4',
             text: "Син модел (4 колелца)"
         }
