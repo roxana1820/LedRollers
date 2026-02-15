@@ -1,4 +1,6 @@
 import React from 'react';
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import { AppSidebar } from "@/components/AppSidebar"
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
@@ -13,28 +15,31 @@ import Products from './components/Products';
 function App() {
   return (
     <Router>
-      <div className="app-content">
-        <Header /> 
-        <Routes>
-          <Route 
-            path="/" 
-            element={
-              <>
-                <Hero />
-                <Benefits />
-                <FeaturedProducts />
-                <MediaGallery />
-              </>
-            } 
-          />
+      <SidebarProvider>
+        <AppSidebar />
+        <div className="app-content">
+          <SidebarTrigger />
+          <Routes>
+            <Route 
+              path="/" 
+              element={
+                <>
+                  <Hero />
+                  <Benefits />
+                  <FeaturedProducts />
+                  <MediaGallery />
+                </>
+              } 
+            />
 
-          <Route 
-            path="/products/:productId" 
-            element={<Products />} 
-          />
-        </Routes>
-        <Footer />
-      </div>
+            <Route 
+              path="/products/:productId" 
+              element={<Products />} 
+            />
+          </Routes>
+          <Footer />
+        </div>
+      </SidebarProvider>
     </Router>
   );
 }
@@ -42,8 +47,16 @@ function App() {
 
 
 const rootEl = document.getElementById('root');
-if (rootEl) {
-  createRoot(rootEl).render(
+if (rootEl && !rootEl._root) {
+  const root = createRoot(rootEl);
+  rootEl._root = root;
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+} else if (rootEl?._root) {
+  rootEl._root.render(
     <React.StrictMode>
       <App />
     </React.StrictMode>
