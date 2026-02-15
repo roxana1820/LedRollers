@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import "../styles/Products.css";
 
 import whiteShoes from "../assets/white_shoes.png";
@@ -49,6 +49,32 @@ const products = [
 ];
 
 export default function Products() {
+  const [sortOrder, setSortOrder] = useState('default');
+  const [sortedProducts, setSortedProducts] = useState(products);
+
+  const handleSort = (e) => {
+    const value = e.target.value;
+    setSortOrder(value);
+    
+    let sorted = [...products];
+    
+    if (value === 'Цена: Ниска към висока') {
+      sorted.sort((a, b) => {
+        const priceA = parseFloat(a.price);
+        const priceB = parseFloat(b.price);
+        return priceA - priceB;
+      });
+    } else if (value === 'Цена: Висока към ниска') {
+      sorted.sort((a, b) => {
+        const priceA = parseFloat(a.price);
+        const priceB = parseFloat(b.price);
+        return priceB - priceA;
+      });
+    }
+    
+    setSortedProducts(sorted);
+  };
+
   useEffect(() => {
     const cards = document.querySelectorAll('.product-card');
     if (!cards || cards.length === 0) return;
@@ -72,11 +98,11 @@ export default function Products() {
     <div className="shop">
       <div className="shop-container">
         
-        
         <div className="top-bar">
+          <h2 className="models-heading">Всички модели</h2>
           <button className="filter-btn">Филтри ⬇</button>
 
-          <select className="sort-select">
+          <select className="sort-select" onChange={handleSort}>
             <option>Подреди по</option>
             <option>Цена: Ниска към висока</option>
             <option>Цена: Висока към ниска</option>
@@ -84,7 +110,7 @@ export default function Products() {
         </div>
 
         <div className="product-grid">
-          {products.map((product, index) => (
+          {sortedProducts.map((product, index) => (
             <div
               key={product.id}
               className="product-card"
