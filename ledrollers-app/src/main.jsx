@@ -21,13 +21,18 @@ function App() {
     <Router>
       <SidebarProvider open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
         <AppSidebar />
+
+        {/* Fixed trigger next to sidebar so it remains visible when sidebar opens */}
+
         <SidebarInset>
-        
+
         <div className="app-content">
               <header className="header">
             
+        <div style={{ position: 'fixed', top: 18, left: (isSidebarOpen ? 250 : 8) }}>
+          <SidebarTrigger />
+        </div>
             <Link to="/" className="ledrollers-logo">LedRollers</Link>
-        <SidebarTrigger/>
         </header>
           <Routes>
             <Route 
