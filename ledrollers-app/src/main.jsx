@@ -1,5 +1,6 @@
 import React from 'react';
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import {Link} from 'react-router-dom';
+import { SidebarProvider, SidebarTrigger, SidebarInset } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/AppSidebar"
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -13,12 +14,21 @@ import Footer from './components/Footer';
 import Products from './components/Products';
 
 function App() {
+
+  const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
+
   return (
     <Router>
-      <SidebarProvider>
+      <SidebarProvider open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
         <AppSidebar />
+        <SidebarInset>
+        
         <div className="app-content">
-          <SidebarTrigger />
+              <header className="header">
+            
+            <Link to="/" className="ledrollers-logo">LedRollers</Link>
+        <SidebarTrigger/>
+        </header>
           <Routes>
             <Route 
               path="/" 
@@ -39,6 +49,7 @@ function App() {
           </Routes>
           <Footer />
         </div>
+        </SidebarInset>
       </SidebarProvider>
     </Router>
   );

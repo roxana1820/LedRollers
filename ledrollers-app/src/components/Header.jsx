@@ -1,27 +1,13 @@
 import {Link} from 'react-router-dom';
-import {useState} from 'react';
+import { SidebarTrigger } from "@/components/ui/sidebar"
 import "../styles/Header.css";
 
 const Header = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
-    const [isSubSubMenuOpen, setIsSubSubMenuOpen] = useState(false);
-
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
-
-    const toggleSubMenu = () => {
-        setIsSubMenuOpen(!isSubMenuOpen);
-    };
-
-    const toggleSubSubMenu = () => {
-        setIsSubSubMenuOpen(!isSubSubMenuOpen);
-    };
-
     return (
         <header className="header">
-            <nav className="nav">
+            
+            <Link to="/" className="ledrollers-logo">LedRollers</Link>
+            {/* <nav className="nav">
                 <div className="menu-icon" onClick={toggleMenu}>
                     <span className={isMenuOpen ? "bar active" : "bar"}></span>
                     <span className={isMenuOpen ? "bar active" : "bar"}></span>
@@ -61,7 +47,7 @@ const Header = () => {
                     <li><Link to="/about" className="navLink" onClick={toggleMenu}>За нас</Link></li>
                     <li><Link to="/contacts" className="navLink" onClick={toggleMenu}>Контакти</Link></li>
                 </ul>
-            </nav>
+            </nav> */}
         </header>
     );
 };

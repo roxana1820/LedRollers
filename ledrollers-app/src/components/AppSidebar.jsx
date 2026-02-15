@@ -22,7 +22,7 @@ export function AppSidebar() {
   const [isShoeTypesOpen, setIsShoeTypesOpen] = useState(false)
 
   return (
-    <Sidebar>
+    <Sidebar className="z-[50]">
       <SidebarHeader>
         <h2 className="px-4 py-2 text-lg font-semibold">LedRollers</h2>
       </SidebarHeader>

@@ -35,3 +35,8 @@ body::-webkit-scrollbar {
 #root {
   width: 100%;
 }
+
+.app-content {
+  margin-top: 85px;
+  width: 100%;
+}
