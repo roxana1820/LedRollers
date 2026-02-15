@@ -48,11 +48,12 @@ const products = [
   }
 ];
 
+//sorting products by price
 export default function Products() {
   const [sortOrder, setSortOrder] = useState('default');
   const [sortedProducts, setSortedProducts] = useState(products);
 
-  const handleSort = (e) => {
+ const handleSort = (e) => {
     const value = e.target.value;
     setSortOrder(value);
     
@@ -60,14 +61,14 @@ export default function Products() {
     
     if (value === 'Цена: Ниска към висока') {
       sorted.sort((a, b) => {
-        const priceA = parseFloat(a.price);
-        const priceB = parseFloat(b.price);
+        const priceA = parseFloat(a.price.replace(/[^0-9.]/g, ''));
+        const priceB = parseFloat(b.price.replace(/[^0-9.]/g, ''));
         return priceA - priceB;
       });
     } else if (value === 'Цена: Висока към ниска') {
       sorted.sort((a, b) => {
-        const priceA = parseFloat(a.price);
-        const priceB = parseFloat(b.price);
+        const priceA = parseFloat(a.price.replace(/[^0-9.]/g, ''));
+        const priceB = parseFloat(b.price.replace(/[^0-9.]/g, ''));
         return priceB - priceA;
       });
     }
@@ -93,20 +94,25 @@ export default function Products() {
 
     cards.forEach((c) => observer.observe(c));
     return () => observer.disconnect();
-  }, []);
+  }, [sortedProducts]);
   return (
     <div className="shop">
       <div className="shop-container">
         
         <div className="top-bar">
           <h2 className="models-heading">Всички модели</h2>
-          <button className="filter-btn">Филтри ⬇</button>
 
-          <select className="sort-select" onChange={handleSort}>
-            <option>Подреди по</option>
-            <option>Цена: Ниска към висока</option>
-            <option>Цена: Висока към ниска</option>
-          </select>
+          <div className="sort-container">
+    <select 
+      className="sort-select" 
+      onChange={handleSort}
+      defaultValue="default"
+    >
+      <option value="default" disabled>Подреди по...</option>
+      <option value="Цена: Ниска към висока">Цена: Ниска към висока</option>
+      <option value="Цена: Висока към ниска">Цена: Висока към ниска</option>
+    </select>
+  </div>
         </div>
 
         <div className="product-grid">
