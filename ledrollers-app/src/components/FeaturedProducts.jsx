@@ -81,8 +81,13 @@ const FeaturedProducts = () => {
                 </button>
 
                 <div className="slider-window">
-                    <div  className="slider-track" 
-                        style={{ transform: `translateX(-${currentIndex * 90}%)` }}
+                    <div
+                        className="slider-track"
+                        style={{
+                            // Show exactly one product at a time and slide by full width
+                            width: `${products.length * 100}%`,
+                            transform: `translateX(-${currentIndex * 100}%)`,
+                        }}
                     >
                         {products.map((product) => (
                             <div className="product-card" key={product.id}>

@@ -34,7 +34,6 @@
 }
 
 .slider-track {
-    width: 100%;
     display: flex;
     gap: 15px;
     transition: transform 0.5s ease-in-out;
@@ -43,7 +42,8 @@
 
 .product-card {
     background: transparent;
-    min-width: 280px;
+    /* Show one full card at a time in the slider */
+    flex: 0 0 100%;
     position: relative;
     text-align: left;
     padding: 15px;

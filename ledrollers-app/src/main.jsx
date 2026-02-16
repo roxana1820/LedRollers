@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import './styles/globals.css';
+import './styles/Products.css';
 import Benefits from './components/Benefits';
 import FeaturedProducts from './components/FeaturedProducts';
 import MediaGallery from './components/MediaGallery';
@@ -30,7 +31,8 @@ function App() {
               <header className="header">
             
         <div style={{ position: 'fixed', top: 18, left: (isSidebarOpen ? 250 : 8) }}>
-          <SidebarTrigger />
+          {/* Inside your App.jsx fixed div */}
+          <SidebarTrigger className="scale-140" />
         </div>
             <Link to="/" className="ledrollers-logo">LedRollers</Link>
         </header>
