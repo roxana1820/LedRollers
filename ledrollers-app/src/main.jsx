@@ -30,9 +30,10 @@ function App() {
         <div className="app-content">
               <header className="header">
             
-        <div style={{ position: 'fixed', top: 18, left: (isSidebarOpen ? 250 : 8) }}>
-          {/* Inside your App.jsx fixed div */}
-          <SidebarTrigger className="scale-140" />
+        <div
+          className={`fixed z-50 top-6 left-1 md:top-[18px] ${isSidebarOpen ? 'md:left-[250px]' : 'md:left-2'}`}
+        >
+          <SidebarTrigger className="size-6 md:size-7 md:scale-140" />
         </div>
             <Link to="/" className="ledrollers-logo">LedRollers</Link>
         </header>
