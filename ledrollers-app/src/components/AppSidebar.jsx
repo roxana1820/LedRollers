@@ -24,37 +24,40 @@ export function AppSidebar() {
   return (
     <Sidebar className="z-[50]">
       <SidebarHeader>
-        <h2 className="px-4 py-2 text-lg font-semibold">LedRollers</h2>
+        <h2 className="px-4 py-4 text-xl md:text-lg font-semibold">LedRollers</h2>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarMenu>
+          <SidebarMenu className="gap-4">
             <SidebarMenuItem>
               <Collapsible open={isProductsOpen} onOpenChange={setIsProductsOpen}>
                 <CollapsibleTrigger asChild>
                   <SidebarMenuButton>
-                    <span>Продукти</span>
+                  <span className="text-lg md:text-base">Продукти</span>
                     <ChevronDown className={`ml-auto transition-transform ${isProductsOpen ? "rotate-180" : ""}`} />
                   </SidebarMenuButton>
                 </CollapsibleTrigger>
-                <CollapsibleContent className="ml-4 mt-2 space-y-2">
+                <CollapsibleContent className="ml-4 mt-1 space-y-2">
+                  <SidebarMenuButton size="text-sm" asChild>
+                    <Link to="/products/1" className="text-lg md:text-base">Всички модели</Link>
+                  </SidebarMenuButton>
                   <Collapsible open={isShoeTypesOpen} onOpenChange={setIsShoeTypesOpen}>
                     <CollapsibleTrigger asChild>
-                      <SidebarMenuButton size="sm" className="w-full">
+                      <SidebarMenuButton size="text-sm" className="w-full">
                         <span>Светещи маратонки с 4 колелца</span>
                         <ChevronDown className={`ml-auto transition-transform ${isShoeTypesOpen ? "rotate-180" : ""}`} />
                       </SidebarMenuButton>
                     </CollapsibleTrigger>
                     <CollapsibleContent className="ml-4 mt-2 space-y-2">
-                      <SidebarMenuButton size="sm" asChild>
+                      <SidebarMenuButton size="text-sm" asChild>
                         <Link to="/boys" className="text-sm">За момчета</Link>
                       </SidebarMenuButton>
-                      <SidebarMenuButton size="sm" asChild>
+                      <SidebarMenuButton size="text-sm" asChild>
                         <Link to="/girls" className="text-sm">За момичета</Link>
                       </SidebarMenuButton>
                     </CollapsibleContent>
                   </Collapsible>
-                  <SidebarMenuButton size="sm" asChild>
+                  <SidebarMenuButton size="text-sm" asChild>
                     <Link to="/non-light-shoes">Несветещи маратонки</Link>
                   </SidebarMenuButton>
                 </CollapsibleContent>
@@ -63,13 +66,13 @@ export function AppSidebar() {
 
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <Link to="/about">За нас</Link>
+                <Link to="/about"><span className="text-lg md:text-base">За нас</span></Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
 
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <Link to="/contacts">Контакти</Link>
+                <Link to="/contacts"><span className="text-lg md:text-base">Контакти</span></Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>

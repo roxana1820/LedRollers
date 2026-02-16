@@ -31,9 +31,9 @@ function App() {
               <header className="header">
             
         <div
-          className={`fixed z-50 top-6 left-1 md:top-[18px] ${isSidebarOpen ? 'md:left-[250px]' : 'md:left-2'}`}
+          className={`fixed z-50 top-5 left-0 md:top-[18px] ${isSidebarOpen ? 'md:left-[250px]' : 'md:left-2'}`}
         >
-          <SidebarTrigger className="size-6 md:size-7 md:scale-140" />
+          <SidebarTrigger className="size-7 scale-120 md:size-8 md:scale-150" />
         </div>
             <Link to="/" className="ledrollers-logo">LedRollers</Link>
         </header>
