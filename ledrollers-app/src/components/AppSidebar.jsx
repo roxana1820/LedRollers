@@ -9,6 +9,7 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
+  useSidebar,
 } from "@/components/ui/sidebar"
 import {
   Collapsible,
@@ -20,6 +21,12 @@ import { ChevronDown } from "lucide-react"
 export function AppSidebar() {
   const [isProductsOpen, setIsProductsOpen] = useState(false)
   const [isShoeTypesOpen, setIsShoeTypesOpen] = useState(false)
+  const { isMobile, setOpenMobile, setOpen } = useSidebar()
+
+  const closeSidebar = () => {
+    if (isMobile) setOpenMobile(false)
+    else setOpen(false)
+  }
 
   return (
     <Sidebar className="z-[50]">
@@ -39,7 +46,7 @@ export function AppSidebar() {
                 </CollapsibleTrigger>
                 <CollapsibleContent className="ml-4 mt-1 space-y-2">
                   <SidebarMenuButton size="text-sm" asChild>
-                    <Link to="/products/1" className="text-lg md:text-base">Всички модели</Link>
+                    <Link to="/products/1" className="text-lg md:text-base" onClick={closeSidebar}>Всички модели</Link>
                   </SidebarMenuButton>
                   <Collapsible open={isShoeTypesOpen} onOpenChange={setIsShoeTypesOpen}>
                     <CollapsibleTrigger asChild>
@@ -50,15 +57,15 @@ export function AppSidebar() {
                     </CollapsibleTrigger>
                     <CollapsibleContent className="ml-4 mt-2 space-y-2">
                       <SidebarMenuButton size="text-sm" asChild>
-                        <Link to="/boys" className="text-sm">За момчета</Link>
+                        <Link to="/boys" className="text-sm" onClick={closeSidebar}>За момчета</Link>
                       </SidebarMenuButton>
                       <SidebarMenuButton size="text-sm" asChild>
-                        <Link to="/girls" className="text-sm">За момичета</Link>
+                        <Link to="/girls" className="text-sm" onClick={closeSidebar}>За момичета</Link>
                       </SidebarMenuButton>
                     </CollapsibleContent>
                   </Collapsible>
                   <SidebarMenuButton size="text-sm" asChild>
-                    <Link to="/non-light-shoes">Несветещи маратонки</Link>
+                    <Link to="/non-light-shoes" onClick={closeSidebar}>Несветещи маратонки</Link>
                   </SidebarMenuButton>
                 </CollapsibleContent>
               </Collapsible>
@@ -66,13 +73,13 @@ export function AppSidebar() {
 
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <Link to="/about"><span className="text-lg md:text-base">За нас</span></Link>
+                <Link to="/about" onClick={closeSidebar}><span className="text-lg md:text-base">За нас</span></Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
 
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <Link to="/contacts"><span className="text-lg md:text-base">Контакти</span></Link>
+                <Link to="/contacts" onClick={closeSidebar}><span className="text-lg md:text-base">Контакти</span></Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
