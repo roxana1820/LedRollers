@@ -4,7 +4,7 @@ import "../styles/About.css"
 
 import heroImage from "../assets/light_up_shoes.png"
 import pinkShoesVideo from "../assets/pink_shoes.MP4"
-import blackShoesVideo from "../assets/black_shoes.MP4"
+import blackShoesVideo from "../assets/Untitled design (1).mp4"
 import wheels from "../assets/putting_wheels.jpeg"
 import firstStep from "../assets/1_step.jpeg"
 import secondStep from "../assets/2_step.jpeg"

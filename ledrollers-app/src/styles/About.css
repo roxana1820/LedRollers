@@ -41,20 +41,20 @@
 .about-video {
   width: 100%;
   display: block;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 22 / 15;
   object-fit: cover;
 }
 
 .about-caption {
   margin: 12px 0 0;
   text-align: center;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: rgba(43, 22, 56, 0.9);
 }
 
 .about-section {
-  margin-top: 14px;
+  margin-top: 18px;
 }
 
 .about-split {
