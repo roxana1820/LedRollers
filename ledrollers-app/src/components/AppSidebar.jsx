@@ -28,6 +28,19 @@ export function AppSidebar() {
     else setOpen(false)
   }
 
+  const handleContactsClick = (e) => {
+    e.preventDefault()
+    closeSidebar()
+
+    const el = document.getElementById("contacts")
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" })
+    } else {
+      // Fallback: set hash in case footer mounts later
+      window.location.hash = "contacts"
+    }
+  }
+
   return (
     <Sidebar className="z-[50]">
       <SidebarHeader>
@@ -79,7 +92,9 @@ export function AppSidebar() {
 
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <Link to="/contacts" onClick={closeSidebar}><span className="text-lg md:text-base">Контакти</span></Link>
+                <a href="#contacts" onClick={handleContactsClick}>
+                  <span className="text-lg md:text-base">Контакти</span>
+                </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>

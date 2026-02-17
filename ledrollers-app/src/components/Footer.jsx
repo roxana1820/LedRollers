@@ -4,7 +4,7 @@ import '../styles/Footer.css';
 function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="site-footer">
+    <footer id="contacts" className="site-footer">
       <div className="footer-left">
         <div className="copyright-block">
           <p className="copyright">© LedRollers {year}</p>
