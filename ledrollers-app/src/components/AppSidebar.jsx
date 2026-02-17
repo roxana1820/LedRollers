@@ -78,7 +78,7 @@ export function AppSidebar() {
                     </CollapsibleContent>
                   </Collapsible>
                   <SidebarMenuButton size="text-sm" asChild>
-                    <Link to="/non-light-shoes" onClick={closeSidebar}>Несветещи маратонки</Link>
+                    <Link to="/non-light-shoes" onClick={closeSidebar}>Светещи маратонки без колелца</Link>
                   </SidebarMenuButton>
                 </CollapsibleContent>
               </Collapsible>

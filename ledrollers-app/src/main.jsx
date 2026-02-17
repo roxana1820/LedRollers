@@ -13,6 +13,7 @@ import FeaturedProducts from './components/FeaturedProducts';
 import MediaGallery from './components/MediaGallery';
 import Footer from './components/Footer';
 import Products from './components/Products';
+import About from './components/About';
 
 function App() {
 
@@ -22,11 +23,7 @@ function App() {
     <Router>
       <SidebarProvider open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
         <AppSidebar />
-
-        {/* Fixed trigger next to sidebar so it remains visible when sidebar opens */}
-
         <SidebarInset>
-
         <div className="app-content">
               <header className="header">
             
@@ -49,10 +46,13 @@ function App() {
                 </>
               } 
             />
-
             <Route 
               path="/products/:productId" 
               element={<Products />} 
+            />
+            <Route
+              path="/about"
+              element={<About />}
             />
           </Routes>
           <Footer />
@@ -62,8 +62,6 @@ function App() {
     </Router>
   );
 }
-
-
 
 const rootEl = document.getElementById('root');
 if (rootEl && !rootEl._root) {
