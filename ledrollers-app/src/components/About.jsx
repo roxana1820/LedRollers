@@ -1,51 +1,64 @@
-import { useEffect } from "react"
+import { useEffect, useState} from "react"
 import { Link } from "react-router-dom"
 import "../styles/About.css"
 
-import presentShoes from "../assets/present_shoes.MP4"
 import heroImage from "../assets/light_up_shoes.png"
-import pinkShoes4 from "../assets/pink_shoes4.jpeg"
 import pinkShoesVideo from "../assets/pink_shoes.MP4"
+import blackShoesVideo from "../assets/black_shoes.MP4"
+import wheels from "../assets/putting_wheels.jpeg"
+import firstStep from "../assets/1_step.jpeg"
+import secondStep from "../assets/2_step.jpeg"
+import thirdStep from "../assets/3_step.jpeg"
+import fifthStep from "../assets/5_step.jpeg"
 
 export default function About() {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" })
   }, [])
 
+   const [formData, setFormData] = useState({ name: "", email: "",message: ""});
+
+   const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    alert("Благодарим ви! Съобщението е изпратено успешно.");
+    setFormData({ name: "", email: "", message: "" });
+   }
+
   const steps = [
     {
       id: 1,
       title: "1. Поставете предните колелца",
       description: "Предните колелца се намират в комплекта. При щракване, те са готови за използване.",
-      imgSrc: heroImage,
+      imgSrc: firstStep,
       imgAlt: "Стъпка 1: Поставете предните колелца",
     },
     {
       id: 2,
       title: "2. Натиснете бутона за задните колелца",
       description: "Бутонът е  разположен в задната част на маратонките. Колелцата изкачат мигновено.",
-      imgSrc: heroImage,
+      imgSrc: secondStep,
       imgAlt: "Стъпка 2: Натиснете бутона",
     },
     {
       id: 3,
       title: "3. Свалете предните колелца",
       description:"Използвайте малката лопатка от комплекта, за да подхванете и извадите колелцата.",
-      imgSrc: heroImage,
+      imgSrc: thirdStep,
       imgAlt: "Стъпка 3: Свалете предните колелца"
     },
     {
       id: 4,
       title: "4. Приберете задните колелца",
       description:"Натиснете бутона, едновременно с това притиснете колелцето навътре и плъзнете предпазният капак.",
-      imgSrc: heroImage,
+      imgSrc: wheels,
       imgAlt: "Стъпка 4: Приберете задните колелца"
     },
     {
       id: 5,
       title: "5. Носете маратонките без колелца",
       description: "Вече можете да изпозлвате обувките като обикновени маратонки.",
-      imgSrc: heroImage,
+      imgSrc: fifthStep,
       imgAlt: "Стъпка 5. Носете ги като обикновени маратонки"
     }
     
@@ -74,24 +87,25 @@ export default function About() {
         <div className="about-card about-textCard">
           <h2 className="about-h2">Нашият опит</h2>
           <p className="about-p">
-            Повече от десетилетие в LedRollers се стремим да създаваме обувки,
-            които носят радост и движение. Комбинираме удобство, безопасност и
-            впечатляващ ефект със светлини, за да превърнем всяка разходка в
-            приключение.
+            Ние в LedRollers се стремим да създаваме обувки,
+            които носят радост и усмивки, комбинирайки удобство, безопасност и
+            впечатляващ ефект със светлини, за да превърнем разходките на всяко дете в приключение.
           </p>
           <p className="about-p">
-            Моделите ни могат да се носят като ежедневни маратонки, а с едно
-            движение се превръщат в ролери. Идеални са за игра навън, за
-            споделени моменти и за много усмивки.
+            Предлагаме модели в различни цветове, със и без колелца. Като тези с колелца могат да се носят и 
+            като ежедневни маратонки, а с натискане на бутона се превръщат в ролери.
+            Идеални са за игра навън или просто нормална разходка.
           </p>
         </div>
 
         <div className="about-card about-imageCard">
-          <img
-            className="about-image"
-            src={heroImage}
-            alt="Светещи маратонки с колелца"
-            loading="lazy"
+        <video
+            className="about-video"
+            src={blackShoesVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
           />
         </div>
       </section>
@@ -128,14 +142,57 @@ export default function About() {
       <section className="about-card about-note">
         <h2 className="about-h2">За LedRollers</h2>
         <p className="about-p">
-          Светлинните режими добавят стил, а стабилната конструкция дава увереност при всяко движение.
-           Ако имате нужда от помощ с избора на размер или допълнителна информация, нашият екип е на ваше разположение. 
+           В комплекта са включени <strong>две колелца</strong>, <strong>лопатка</strong> и <strong>USB кабел</strong>, с който се зареждат маратонките.
+           При интерес или нужда от допълнителна информация, можете да се свържете с нас.
         </p>
         <div className="about-noteActions">
           <a className="about-link" href="#contacts">
             Към контакти
           </a>
         </div>
+      </section>
+
+      <section id="contacts" className="about-card about-contactSection">
+        <h2 className="about-h2">Свържете се с нас</h2>
+        <form className="about-form" onSubmit={handleSubmit}>
+          <div className="about-inputGroup">
+            <label className="about-label">Две имена</label>
+            <input
+            type="text"
+            className="about-input"
+            placeholder="Име и фамилия"
+            value={formData.name}
+            onChange={(e) => setFormData({...formData, name: e.target.value})}
+              required
+            />
+          </div>
+
+          <div className="about-inputGroup">
+            <label className="about-label">Имейл адрес</label>
+            <input
+            type="email"
+            className="about-input"
+            placeholder="example@gmail.com"
+            value={formData.email}
+            onChange={(e) => setFormData({...formData, email: e.target.value})}
+              required 
+            />
+          </div>
+
+          <div className="about-inputGroup">
+            <label className="about-label">Съобщение</label>
+            <textarea 
+              className="about-input about-textarea" 
+              placeholder="Напишете вашето съобщение тук..."
+              rows="4"
+              value={formData.message}
+              onChange={(e) => setFormData({...formData, message: e.target.value})}
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" className="about-ctaBtn">Изпрати запитване</button>
+        </form>
       </section>
     </main>
   )

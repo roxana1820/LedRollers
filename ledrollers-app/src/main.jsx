@@ -14,6 +14,7 @@ import MediaGallery from './components/MediaGallery';
 import Footer from './components/Footer';
 import Products from './components/Products';
 import About from './components/About';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop/>
       <SidebarProvider open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
         <AppSidebar />
         <SidebarInset>
