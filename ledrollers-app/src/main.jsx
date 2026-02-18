@@ -52,6 +52,14 @@ function App() {
               path="/products/:productId" 
               element={<Products />} 
             />
+            <Route 
+              path="/boys" 
+              element={<Products categoryFilter="boy" />} 
+            />
+            <Route 
+              path="/girls" 
+              element={<Products categoryFilter="girl" />} 
+            />
             <Route
               path="/about"
               element={<About />}

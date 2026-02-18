@@ -14,50 +14,69 @@ const products = [
     price: "38.00 € ",
     oldPrice: "47.00 €",
     image: pinkShoes4,
-    isNew: true
+    isNew: true,
+    category: 'girl' 
   },
   {
     id: 2,
     name: "Светещи бели ролери",
     price: "47.00 € ",
     oldPrice: "55.00 €",
-    image:whiteShoes
+    image: whiteShoes,
+    category: 'girl' 
   },
   {
     id: 3,
     name: "Светещи сини ролери",
     price: "38.00 € ",
     oldPrice: "47.00 €",
-    image:blueShoes4,
-    isNew: true
+    image: blueShoes4,
+    isNew: true,
+    category: 'boy'
   },
   {
     id: 4,
     name: "Светещи розови ролери",
     price: "38.00 € ",
     oldPrice: "47.00 €",
-    image:pinkShoes
+    image: pinkShoes,
+    category: 'girl'
   },
   {
     id: 5,
-    name: "Розови светещи ролери",
+    name: "Черни светещи ролери",
     price: "60.00 € ",
     oldPrice: "65.00 €",
-    image:blackShoes,
-    isNew: true
+    image: blackShoes,
+    isNew: true,
+    category: 'boy'
   }
 ];
 
-//sorting products by price
-export default function Products() {
+export default function Products({ categoryFilter }) {
   const [sortOrder, setSortOrder] = useState('default');
-  const [sortedProducts, setSortedProducts] = useState(products);
+  
 
- const handleSort = (e) => {
+  const getInitialProducts = () => {
+    if (!categoryFilter) 
+      return products; 
+    return products.filter(p => p.category === categoryFilter);
+  };
+
+  const [sortedProducts, setSortedProducts] = useState(getInitialProducts);
+
+
+  useEffect(() => {
+    setSortedProducts(getInitialProducts());
+    setSortOrder('default'); 
+  }, [categoryFilter]);
+
+
+  const handleSort = (e) => {
     const value = e.target.value;
     setSortOrder(value);
     
-    let sorted = [...products];
+    let sorted = [...getInitialProducts()];
     
     if (value === 'Цена: Ниска към висока') {
       sorted.sort((a, b) => {
@@ -95,44 +114,49 @@ export default function Products() {
     cards.forEach((c) => observer.observe(c));
     return () => observer.disconnect();
   }, [sortedProducts]);
+
   return (
     <div className="shop">
       <div className="shop-container">
         
         <div className="top-bar">
-          <h2 className="models-heading">Всички модели</h2>
+          <h2 className="models-heading">
+            {categoryFilter === 'boy' ? 'Модели за момчета' : 
+             categoryFilter === 'girl' ? 'Модели за момичета' : 
+             'Всички модели'}
+          </h2>
 
           <div className="sort-container">
-    <select 
-      className="sort-select" 
-      onChange={handleSort}
-      defaultValue="default"
-    >
-      <option value="default" disabled>Подреди по...</option>
-      <option value="Цена: Ниска към висока">Цена: Ниска към висока</option>
-      <option value="Цена: Висока към ниска">Цена: Висока към ниска</option>
-    </select>
-  </div>
+            <select 
+              className="sort-select" 
+              onChange={handleSort}
+              value={sortOrder} 
+            >
+              <option value="default" disabled>Подреди по...</option>
+              <option value="Цена: Ниска към висока">Цена: Ниска към висока</option>
+              <option value="Цена: Висока към ниска">Цена: Висока към ниска</option>
+            </select>
+          </div>
         </div>
 
         <div className="product-grid">
-          {sortedProducts.map((product, index) => (
-            <div
-              key={product.id}
-              className="product-card"
-              style={{ '--i': index }}
-            >
-              {product.isNew && <span className="badge">Ново</span>}
-
-              <img src={product.image} alt={product.name} />
-
-              <h3>{product.name}</h3>
-
-              <p className="old-price">{product.oldPrice}</p>
-              <p className="price">{product.price}</p>
-
-            </div>
-          ))}
+          {sortedProducts.length > 0 ? (
+            sortedProducts.map((product, index) => (
+              <div
+                key={product.id}
+                className="product-card"
+                style={{ '--i': index }}
+              >
+                {product.isNew && <span className="badge">Ново</span>}
+                <img src={product.image} alt={product.name} />
+                <h3>{product.name}</h3>
+                <p className="old-price">{product.oldPrice}</p>
+                <p className="price">{product.price}</p>
+              </div>
+            ))
+          ) : (
+            <p className="no-products">Няма намерени продукти в тази категория.</p>
+          )}
         </div>
       </div>
     </div>
