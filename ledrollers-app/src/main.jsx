@@ -13,6 +13,7 @@ import FeaturedProducts from './components/FeaturedProducts';
 import MediaGallery from './components/MediaGallery';
 import Footer from './components/Footer';
 import Products from './components/Products';
+import ProductDetails from './components/ProductDetails';
 import About from './components/About';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -52,6 +53,10 @@ function App() {
               path="/products/:productId" 
               element={<Products />} 
             />
+             <Route 
+             path="/product/:id" 
+              element={<ProductDetails />} 
+             />
             <Route 
               path="/boys" 
               element={<Products categoryFilter="boy" />} 

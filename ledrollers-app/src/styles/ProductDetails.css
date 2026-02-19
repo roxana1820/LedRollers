@@ -1,0 +1,112 @@
+.product-details {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 12px 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-card {
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(61, 39, 111, 0.18);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(32, 10, 58, 0.08);
+  padding: 24px;
+}
+
+.details-image {
+  width: 100%;
+  border-radius: 16px;
+  display: block;
+  object-fit: cover;
+}
+
+.details-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d1466;
+  margin-bottom: 8px;
+}
+
+.details-price {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #e74c3c;
+  margin-bottom: 20px;
+}
+
+
+.about-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.about-inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.about-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2d1466;
+  margin-left: 4px;
+}
+
+.about-input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(61, 39, 111, 0.2);
+  background: rgba(255, 255, 255, 0.8);
+  font-family: inherit;
+  font-size: 1rem;
+  color: #2b1638;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.about-input:focus {
+  border-color: #47629b;
+  box-shadow: 0 0 0 3px rgba(71, 98, 155, 0.1);
+}
+
+.about-ctaBtn {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  padding: 14px 20px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #ffffff;
+  background: linear-gradient(90deg, #41446f, #47629b);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+  margin-top: 10px;
+}
+
+.about-ctaBtn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+}
+
+/* Desktop layout */
+@media (min-width: 900px) {
+  .product-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    padding: 40px 16px;
+  }
+
+  .details-image {
+    position: sticky;
+    top: 20px;
+  }
+}
