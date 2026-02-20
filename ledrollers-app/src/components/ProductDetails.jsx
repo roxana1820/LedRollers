@@ -14,7 +14,8 @@ export default function ProductDetails() {
     fullName: "",
     address: "",
     phone: "",
-    size: ""
+    size: "",
+    quantity: 1
   });
 
   if (!product) return <p>Продуктът не е намерен.</p>;
@@ -39,8 +40,17 @@ export default function ProductDetails() {
       fullName: "",
       address: "",
       phone: "",
-      size: ""
+      size: "",
+      quantity: 1
     });
+  };
+
+  const increaseQty = () => {
+   setFormData(prev => ({ ...prev,quantity: prev.quantity + 1}));
+  };
+
+  const decreaseQty = () => {
+   setFormData(prev => ({...prev,quantity: prev.quantity > 1 ? prev.quantity - 1 : 1}));
   };
 
   return (
@@ -85,6 +95,7 @@ export default function ProductDetails() {
 
       <div className="details-content">
         <h1 className="details-title">{product.name}</h1>
+         <p className="old-price">{product.oldPrice}</p>
         <p className="details-price">{product.price}</p>
 
         <section className="about-card order-section">
@@ -150,10 +161,38 @@ export default function ProductDetails() {
               </select>
             </div>
 
+            <div className="about-inputGroup">
+                <label className="about-label">Брой</label>
+                <div className="quantity-selector">
+                    <button type="button" className="qty-btn" onClick={decreaseQty}>-</button>
+                    <div className="qty-number">{formData.quantity}</div>
+                    <button type="button" className="qty-btn" onClick={increaseQty}>+</button>
+                </div>
+            </div>
+
             <button type="submit" className="about-ctaBtn order-submit-btn">
               Поръчай сега
             </button>
           </form>
+
+        <div className="quick-order-container">
+            <div className="quick-order-divider">
+                <span>Или</span>
+            </div>
+            <h3 className="quick-order-title">
+                <span className="phone-icon">📞</span> Бърза поръчка чрез телефон
+            </h3>
+
+            <div className="phone-links">
+                 <a href="tel:+359888335992" className="phone-number">0888335992</a>
+                <a href="tel:+359878345320" className="phone-number">0878345320</a>
+            </div>
+            <p className="quick-order-note">Работно време:
+                Понеделник - Неделя (09:00ч. - 21:00ч.)
+            </p>
+        </div>
+        
+          
         </section>
       </div>
     </div>

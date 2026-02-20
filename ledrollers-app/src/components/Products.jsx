@@ -97,7 +97,6 @@ export default function Products({ categoryFilter }) {
               >
                 {product.isNew && <span className="badge">Ново</span>}
 
-                {/* 👇 ТУК Е ПРОМЯНАТА */}
                 <img src={product.images[0]} alt={product.name} />
 
                 <h3>{product.name}</h3>
