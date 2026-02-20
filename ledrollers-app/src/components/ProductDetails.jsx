@@ -7,12 +7,29 @@ export default function ProductDetails() {
   const { id } = useParams();
   const product = products.find(p => p.id === Number(id));
 
+  // Използваме името 'curentImage', както е в твоя код
+  const [curentImage, setCurrentImage] = useState(0);
+
   const [formData, setFormData] = useState({
     fullName: "",
     address: "",
     phone: "",
     size: ""
   });
+
+  if (!product) return <p>Продуктът не е намерен.</p>;
+
+  const nextImage = () => {
+    setCurrentImage((prev) =>
+      prev === product.images.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImage((prev) =>
+      prev === 0 ? product.images.length - 1 : prev - 1
+    );
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,21 +43,50 @@ export default function ProductDetails() {
     });
   };
 
-  if (!product) return <p>Продуктът не е намерен.</p>;
-
   return (
     <div className="product-details">
- 
       <div className="details-media">
-        <img src={product.image} alt={product.name} className="details-image" />
-      </div>
+        <div className="image-gallery">
+          
+          <div className="gallery-frame">
+            <button className="arrow-left" onClick={prevImage} type="button">◀</button>
+        
+            <div 
+              className="gallery-slider" 
+              style={{ transform: `translateX(-${curentImage * 100}%)` }}
+            >
+              {product.images.map((img, index) => (
+                <img 
+                  key={index} 
+                  src={img} 
+                  alt={`${product.name} ${index}`} 
+                  className="details-image" 
+                />
+              ))}
+            </div>
 
+            <button className="arrow-right" onClick={nextImage} type="button">▶</button>
+          </div>
+
+          <div className="thumbnails">
+            {product.images.map((img, index) => (
+              <img
+                key={index}
+                src={img}
+                alt="thumb"
+                className={`thumbnail ${curentImage === index ? "active" : ""}`}
+                onClick={() => setCurrentImage(index)}
+              />
+            ))}
+          </div>
+
+        </div>
+      </div>
 
       <div className="details-content">
         <h1 className="details-title">{product.name}</h1>
         <p className="details-price">{product.price}</p>
 
-      
         <section className="about-card order-section">
           <h2 className="about-h2">Данни за поръчка</h2>
           <form className="about-form" onSubmit={handleSubmit}>

@@ -8,6 +8,98 @@
   gap: 20px;
 }
 
+.image-gallery {
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+  text-align: center;
+  display: inline-block;
+}
+
+.gallery-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(61, 39, 111, 0.15);
+  border-radius: 20px;
+  padding: 15px;
+  background: transparent;
+  overflow: hidden; 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.gallery-slider {
+  display: flex;
+  width: 100%;
+  height: 100%;
+ transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.arrow-left, .arrow-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgb(255, 255, 255);
+  color: #2d1466;
+  border: 1px solid rgba(61, 39, 111, 0.1);
+  backdrop-filter: blur(4px);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.2s ease;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.arrow-left {
+  left: 0;
+}
+
+.arrow-right {
+  right: 0;
+}
+
+.arrow-left:hover, .arrow-right:hover {
+  background: #ffffff;
+  transform: translateY(-50%) scale(1.1); 
+  color: #4b140e;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.arrow-left:active, .arrow-right:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.thumbnails {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  gap: 10px;
+}
+
+.thumbnail {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  cursor: pointer;
+  opacity: 0.6;
+  border: 2px solid transparent;
+}
+
+.thumbnail.active {
+  opacity: 1;
+  border: 2px solid black;
+}
+
 .about-card {
   background: rgba(255, 255, 255, 0.62);
   border: 1px solid rgba(61, 39, 111, 0.18);
@@ -17,10 +109,12 @@
 }
 
 .details-image {
+  flex: 0 0 100%; /* Всяка снимка заема точно 100% от ширината на рамката */
   width: 100%;
-  border-radius: 16px;
+  height: 100%;
+  object-fit: contain; /* Запазва пропорциите без да реже обувката */
   display: block;
-  object-fit: cover;
+  padding: 5px;
 }
 
 .details-title {
@@ -36,7 +130,6 @@
   color: #e74c3c;
   margin-bottom: 20px;
 }
-
 
 .about-form {
   display: flex;
@@ -95,6 +188,7 @@
   transform: translateY(-1px);
   filter: brightness(1.1);
 }
+
 
 /* Desktop layout */
 @media (min-width: 900px) {

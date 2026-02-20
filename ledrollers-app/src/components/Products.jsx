@@ -5,29 +5,26 @@ import { products } from "../data/products";
 
 export default function Products({ categoryFilter }) {
   const [sortOrder, setSortOrder] = useState('default');
-  
 
   const getInitialProducts = () => {
-    if (!categoryFilter) 
-      return products; 
+    if (!categoryFilter)
+      return products;
     return products.filter(p => p.category === categoryFilter);
   };
 
   const [sortedProducts, setSortedProducts] = useState(getInitialProducts);
 
-
   useEffect(() => {
     setSortedProducts(getInitialProducts());
-    setSortOrder('default'); 
+    setSortOrder('default');
   }, [categoryFilter]);
-
 
   const handleSort = (e) => {
     const value = e.target.value;
     setSortOrder(value);
-    
+
     let sorted = [...getInitialProducts()];
-    
+
     if (value === 'Цена: Ниска към висока') {
       sorted.sort((a, b) => {
         const priceA = parseFloat(a.price.replace(/[^0-9.]/g, ''));
@@ -41,7 +38,7 @@ export default function Products({ categoryFilter }) {
         return priceB - priceA;
       });
     }
-    
+
     setSortedProducts(sorted);
   };
 
@@ -68,19 +65,19 @@ export default function Products({ categoryFilter }) {
   return (
     <div className="shop">
       <div className="shop-container">
-        
+
         <div className="top-bar">
           <h2 className="models-heading">
-            {categoryFilter === 'boy' ? 'Модели за момчета' : 
-             categoryFilter === 'girl' ? 'Модели за момичета' : 
-             'Всички модели'}
+            {categoryFilter === 'boy' ? 'Модели за момчета' :
+              categoryFilter === 'girl' ? 'Модели за момичета' :
+                'Всички модели'}
           </h2>
 
           <div className="sort-container">
-            <select 
-              className="sort-select" 
+            <select
+              className="sort-select"
               onChange={handleSort}
-              value={sortOrder} 
+              value={sortOrder}
             >
               <option value="default" disabled>Подреди по...</option>
               <option value="Цена: Ниска към висока">Цена: Ниска към висока</option>
@@ -93,22 +90,28 @@ export default function Products({ categoryFilter }) {
           {sortedProducts.length > 0 ? (
             sortedProducts.map((product, index) => (
               <Link
-               to={`/product/${product.id}`}
-               key={product.id}
-               className="product-card"
-               style={{ '--i': index }}
-               >
+                to={`/product/${product.id}`}
+                key={product.id}
+                className="product-card"
+                style={{ '--i': index }}
+              >
                 {product.isNew && <span className="badge">Ново</span>}
-                <img src={product.image} alt={product.name} />
+
+                {/* 👇 ТУК Е ПРОМЯНАТА */}
+                <img src={product.images[0]} alt={product.name} />
+
                 <h3>{product.name}</h3>
                 <p className="old-price">{product.oldPrice}</p>
                 <p className="price">{product.price}</p>
-                </Link>
+              </Link>
             ))
           ) : (
-            <p className="no-products">Няма намерени продукти в тази категория.</p>
+            <p className="no-products">
+              Няма намерени продукти в тази категория.
+            </p>
           )}
         </div>
+
       </div>
     </div>
   );
