@@ -11,13 +11,14 @@
     justify-content: center;
     gap: 20px;
     min-height: 70px;
+    z-index: 1000;
 }
 
 .nav {
     display:flex;
     align-items: center;
     justify-content: center;
-    position: relative; /*for absolute positioning of navList*/
+    position: relative; 
 }
 
 .ledrollers-logo {
