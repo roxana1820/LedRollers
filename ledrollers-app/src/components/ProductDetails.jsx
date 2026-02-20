@@ -7,7 +7,6 @@ export default function ProductDetails() {
   const { id } = useParams();
   const product = products.find(p => p.id === Number(id));
 
-  // Използваме името 'curentImage', както е в твоя код
   const [curentImage, setCurrentImage] = useState(0);
 
   const [formData, setFormData] = useState({
@@ -15,7 +14,8 @@ export default function ProductDetails() {
     address: "",
     phone: "",
     size: "",
-    quantity: 1
+    quantity: 1,
+    note: ""
   });
 
   if (!product) return <p>Продуктът не е намерен.</p>;
@@ -168,6 +168,16 @@ export default function ProductDetails() {
                     <div className="qty-number">{formData.quantity}</div>
                     <button type="button" className="qty-btn" onClick={increaseQty}>+</button>
                 </div>
+            </div>
+
+            <div className="about-inputGroup">
+                 <label className="about-label">Бележка за поръчката</label>
+                 <textarea
+                 className="about-input"
+                placeholder="Специална доставка, поръчка на различни модели..."
+                value={formData.note}
+                onChange={(e) => setFormData({ ...formData, note: e.target.value })}
+               />
             </div>
 
             <button type="submit" className="about-ctaBtn order-submit-btn">

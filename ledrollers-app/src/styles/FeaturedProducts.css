@@ -29,21 +29,22 @@
 
 .slider-window {
     width: 100%;
+    height: 300px;
     border-radius: 10px;
     overflow: hidden;
 }
 
 .slider-track {
     display: flex;
-    gap: 15px;
+    gap: 0;
     transition: transform 0.5s ease-in-out;
 
 }
 
 .product-card {
     background: transparent;
-    /* Show one full card at a time in the slider */
     flex: 0 0 100%;
+    box-sizing: border-box;
     position: relative;
     text-align: left;
     padding: 15px;

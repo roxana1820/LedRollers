@@ -84,9 +84,8 @@ const FeaturedProducts = () => {
                     <div
                         className="slider-track"
                         style={{
-                            // Show exactly one product at a time and slide by full width
-                            width: `${products.length * 100}%`,
-                            transform: `translateX(-${currentIndex * 100}%)`,
+                             width: `${products.length * 100}%`,
+                             transform: `translateX(-${currentIndex * (100 / products.length)}%)`
                         }}
                     >
                         {products.map((product) => (
