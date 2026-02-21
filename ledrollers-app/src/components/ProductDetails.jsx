@@ -18,7 +18,8 @@ export default function ProductDetails() {
     note: ""
   });
 
-  const[errors, setErrors] = useState(0);
+  const[errors, setErrors] = useState({});
+  const [showSuccess, setShowSuccess] = useState(false);
 
   if (!product) return <p>Продуктът не е намерен.</p>;
 
@@ -80,7 +81,15 @@ const handleSubmit = async (e) => {
     const data = await response.json();
 
     if (response.ok) {
-      alert("Поръчката е изпратена успешно!");
+      setShowSuccess(true);
+      setFormData ({
+       fullName:"",
+       address: "",
+       phone: "",
+       size: "",
+       quantity: 1,
+       note: ""
+      });
     } else {
       alert("Грешка при изпращане!");
     }
@@ -239,6 +248,18 @@ const handleSubmit = async (e) => {
               Поръчай сега
             </button>
           </form>
+
+          {showSuccess && (
+            <div className="success-overlay">
+                <div className="success-modal">
+                    <h2>✅ Поръчката е изпратена успешно!</h2>
+                    <p>Ще се свържем с вас възможно най-скоро.</p>
+                    <button className="about-ctaBtn"
+                    onClick={() => setShowSuccess(false)}
+                    >Затвори</button>
+                </div>
+            </div>
+          )}
 
         <div className="quick-order-container">
             <div className="quick-order-divider">
