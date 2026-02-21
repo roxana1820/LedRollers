@@ -18,12 +18,31 @@ export default function About() {
 
    const [formData, setFormData] = useState({ name: "", email: "",message: ""});
 
-   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Благодарим ви! Съобщението е изпратено успешно.");
-    setFormData({ name: "", email: "", message: "" });
-   }
+   const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch("http://localhost:5000/send-contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert("Благодарим ви! Съобщението е изпратено успешно.");
+      setFormData({ name: "", email: "", message: "" });
+    } else {
+      alert(data.message);
+    }
+
+  } catch (error) {
+    alert("Сървърът не работи.");
+  }
+};
 
   const steps = [
     {

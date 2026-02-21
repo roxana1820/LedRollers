@@ -244,6 +244,8 @@ const handleSubmit = async (e) => {
                />
             </div>
 
+            <p className="order-details">📦 Изпращаме поръчките <strong>с преглед и тест.</strong></p>
+
             <button type="submit" className="about-ctaBtn order-submit-btn">
               Поръчай сега
             </button>
