@@ -176,6 +176,13 @@
   box-shadow: 0 0 0 3px rgba(71, 98, 155, 0.1);
 }
 
+.error-text {
+  font-size: 0.8rem;
+  margin-top: 4px;
+  color: #e74c3c;
+  margin-left: 4px;
+}
+
 .about-ctaBtn {
   display: inline-block;
   text-decoration: none;

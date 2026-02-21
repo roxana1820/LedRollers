@@ -18,6 +18,8 @@ export default function ProductDetails() {
     note: ""
   });
 
+  const[errors, setErrors] = useState(0);
+
   if (!product) return <p>Продуктът не е намерен.</p>;
 
   const nextImage = () => {
@@ -35,6 +37,33 @@ export default function ProductDetails() {
 
 const handleSubmit = async (e) => {
   e.preventDefault();
+
+  const newErrors = {};
+
+  /*Phone validation */
+  const phoneRegex = /^0[0-9]{9}$/;
+  if(!phoneRegex.test(formData.phone)) {
+    newErrors.phone = "Моля, въведете валиден телефонен номер!";
+  }
+
+  if(formData.fullName.trim().split(" ").length < 2) {
+     newErrors.fullName = "Моля, въведете поне две имена!";
+  }
+
+  if(formData.address.trim().length < 6) {
+     newErrors.address = "Моля, въведете точен адрес за доставка!";
+  }
+
+   if (!formData.size) {
+    newErrors.size = "Моля, изберете размер!";
+  }
+
+  if(Object.keys(newErrors).length > 0) {
+    setErrors(newErrors);
+    return;
+  }
+
+  setErrors({});
 
   try {
     const response = await fetch("http://localhost:5000/send-order", {
@@ -126,10 +155,12 @@ const handleSubmit = async (e) => {
                 type="text"
                 className="about-input"
                 placeholder="Име и фамилия"
-                required
                 value={formData.fullName}
                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
               />
+              {errors.fullName && (
+                <span className="error-text">{errors.fullName}</span>
+              )}
             </div>
 
             <div className="about-inputGroup">
@@ -138,10 +169,12 @@ const handleSubmit = async (e) => {
                 type="text"
                 className="about-input"
                 placeholder="Град, офис или адрес"
-                required
                 value={formData.address}
                 onChange={(e) => setFormData({ ...formData, address: e.target.value })}
               />
+              {errors.address && (
+                <span className="error-text">{errors.address}</span>
+              )}
             </div>
 
             <div className="about-inputGroup">
@@ -150,17 +183,18 @@ const handleSubmit = async (e) => {
                 type="tel"
                 className="about-input"
                 placeholder="08XXXXXXXX"
-                required
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               />
+              {errors.phone && (
+                 <span className="error-text">{errors.phone}</span>
+               )}
             </div>
 
             <div className="about-inputGroup">
               <label className="about-label">Изберете размер</label>
               <select
                 className="about-input"
-                required
                 value={formData.size}
                 onChange={(e) => setFormData({ ...formData, size: e.target.value })}
               >
@@ -177,6 +211,9 @@ const handleSubmit = async (e) => {
                 <option value="39">39</option>
                 <option value="40">40</option>
               </select>
+              {errors.size && (
+                <span className="error-text">{errors.size}</span>
+              )}
             </div>
 
             <div className="about-inputGroup">
