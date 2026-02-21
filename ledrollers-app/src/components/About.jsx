@@ -2,14 +2,14 @@ import { useEffect, useState} from "react"
 import { Link } from "react-router-dom"
 import "../styles/About.css"
 
-import heroImage from "../assets/light_up_shoes.png"
-import pinkShoesVideo from "../assets/pink_shoes.MP4"
-import blackShoesVideo from "../assets/Untitled design (1).mp4"
+
+import pinkShoesVideo from "../assets/videos/pink_shoes.MP4"
+import blackShoesVideo from "../assets/videos/blackGreen_shoes.MP4"
 import wheels from "../assets/putting_wheels.jpeg"
-import firstStep from "../assets/1_step.jpeg"
-import secondStep from "../assets/2_step.jpeg"
-import thirdStep from "../assets/3_step.jpeg"
-import fifthStep from "../assets/5_step.jpeg"
+import firstStep from "../assets/steps/1_step.jpeg"
+import secondStep from "../assets/steps/2_step.jpeg"
+import thirdStep from "../assets/steps/3_step.jpeg"
+import fifthStep from "../assets/steps/5_step.jpeg"
 
 export default function About() {
   useEffect(() => {

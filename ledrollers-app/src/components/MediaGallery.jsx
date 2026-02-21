@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import "../styles/MediaGallery.css";
 
-import presentShoes from "../assets/present_shoes.MP4";
+import presentShoes from "../assets/videos/present_shoes.MP4";
 import blackShoes from "../assets/black_shoes2.png";
 import pinkShoes44 from "../assets/pink_shoes44.png";
 import whiteShoes4 from "../assets/white_shoes4.png";
@@ -22,35 +22,35 @@ const MediaGallery = () => {
             id: 5,
             src: pinkShoes44, 
             alt: "Розови с 4 колелца",
-            linkTo: '/product/pink_shoes4',
+            linkTo: '/product/4',
             text: "Розов модел (4 колелца)"
         },
         {
             id: 6,
             src: whiteShoes4,
             alt: "Бели с 4 колелца",
-            linkTo: '/product/white_shoes4',
+            linkTo: '/product/2',
             text: "Бял модел (4 колелца)"
         },
         {
             id: 7,
             src: blackShoes,
             alt: "Черни с 4 колелца",
-            linkTo: '/product/black_shoes4',
+            linkTo: '/product/5',
             text: "Черен модел (4 колелца)"
         },
         {
             id: 8,
             src: pinkShoes4,
             alt: "Нови розови с 4 колелца",
-            linkTo: '/product/black_shoes4',
+            linkTo: '/product/1',
             text: "Черен модел (4 колелца)"
         },
         {
             id: 9,
             src: blueShoes4,
             alt: "Нови Сини с 4 колелца",
-            linkTo: '/product/blue_shoes4',
+            linkTo: '/product/3',
             text: "Син модел (4 колелца)"
         }
 

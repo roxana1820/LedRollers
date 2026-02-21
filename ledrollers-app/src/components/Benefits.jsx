@@ -1,6 +1,6 @@
-import shoeImage1 from "../assets/benefit_shoe.png";  
-import safetyImage from "../assets/benefit_safety.png";
-import chargingImage from "../assets/benefit_charge.png";
+import shoeImage1 from "../assets/benefits/benefit_shoe.png";  
+import safetyImage from "../assets/benefits/benefit_safety.png";
+import chargingImage from "../assets/benefits/benefit_charge.png";
 import '../styles/Benefits.css';
 
 

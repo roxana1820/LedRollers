@@ -207,8 +207,8 @@ const handleSubmit = async (e) => {
                 value={formData.size}
                 onChange={(e) => setFormData({ ...formData, size: e.target.value })}
               >
-                <option value="">-- Изберете размер --</option>
-                <option value="30">30</option>
+                <option value="">-- Изберете размер (стелка в см.) --</option>
+                <option value="30">30 </option>
                 <option value="31">31</option>
                 <option value="32">32</option>
                 <option value="33">33</option>
