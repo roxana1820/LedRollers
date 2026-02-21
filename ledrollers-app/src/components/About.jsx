@@ -142,6 +142,7 @@ export default function About() {
         <h2 className="about-h2">За LedRollers</h2>
         <p className="about-p">
            В комплекта са включени <strong>две колелца</strong>, <strong>лопатка</strong> и <strong>USB кабел</strong>, с който се зареждат маратонките.
+           Светят в 9 различни режима като цветът се сменя с лесно натискане на бутона.
            При интерес или нужда от допълнителна информация, можете да се свържете с нас.
         </p>
         <div className="about-noteActions">

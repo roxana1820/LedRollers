@@ -32,18 +32,36 @@ export default function ProductDetails() {
     );
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Order:", formData);
-    alert("Поръчката е изпратена успешно!");
-    setFormData({
-      fullName: "",
-      address: "",
-      phone: "",
-      size: "",
-      quantity: 1
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch("http://localhost:5000/send-order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...formData,
+        product: product.name
+      }),
     });
-  };
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert("Поръчката е изпратена успешно!");
+    } else {
+      alert("Грешка при изпращане!");
+    }
+
+  } catch (error) {
+    alert("Сървърът не работи!");
+  }
+};
+
+
 
   const increaseQty = () => {
    setFormData(prev => ({ ...prev,quantity: prev.quantity + 1}));
