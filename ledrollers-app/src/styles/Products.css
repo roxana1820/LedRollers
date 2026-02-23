@@ -25,7 +25,8 @@
   margin-bottom: 30px;
   gap: 10px;
 }
-/* Container for the select to position a custom arrow */
+
+
 .sort-container {
   position: relative;
   width: fit-content;
@@ -34,7 +35,7 @@
 
 .sort-select {
   width: 100%;
-  padding: 12px 40px 12px 15px; /* Extra right padding for the arrow */
+  padding: 12px 40px 12px 15px; 
   border: 2px solid #f0e6f2;
   border-radius: 12px;
   background-color: #ffffff;
@@ -42,7 +43,7 @@
   font-size: 15px;
   font-weight: 500;
   cursor: pointer;
-  appearance: none; /* Removes default browser arrow */
+  appearance: none;
   -webkit-appearance: none;
   transition: all 0.2s ease;
   box-shadow: 0 2px 5px rgba(0,0,0,0.03);
@@ -82,11 +83,10 @@
 .product-card {
   position: relative;
   padding-top: 30px;
-  background-color: rgb(251, 240, 250);
+  background-color: rgb(255, 255, 255);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  /* start hidden and slide up when revealed */
   opacity: 0;
   transform: translateY(18px);
   transition-property: opacity, transform, box-shadow;
@@ -103,7 +103,7 @@
   transform: translateY(-4px);
 }
 
-/* visible state applied by IntersectionObserver */
+
 .product-card.visible {
   opacity: 1;
   transform: translateY(0);

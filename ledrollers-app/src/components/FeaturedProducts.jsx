@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { products } from "../data/products";
 import '../styles/FeaturedProducts.css';
 
 const FeaturedProducts = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [visible, setVisible] = useState(1);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const updateVisible = () => {
@@ -45,7 +48,8 @@ const FeaturedProducts = () => {
                             <div
                                 className="featured-products-card"
                                 key={product.id}
-                                style={{ flex: `0 0 calc(${100 / visible}% - ${16 * (visible - 1) / visible}px)` }}
+                                onClick={() => navigate(`/product/${product.id}`)}
+                                style={{ cursor: "pointer",flex: `0 0 calc(${100 / visible}% - ${16 * (visible - 1) / visible}px)` }}
                             >
                                 {product.isNew && <span className="featured-products-badge">Ново</span>}
                                 <div className="featured-products-image-wrapper">
