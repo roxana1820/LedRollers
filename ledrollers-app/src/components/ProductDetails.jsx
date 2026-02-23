@@ -238,7 +238,7 @@ const handleSubmit = async (e) => {
                  <label className="about-label">Бележка за поръчката</label>
                  <textarea
                  className="about-input"
-                placeholder="Специална доставка, поръчка на различни модели..."
+                placeholder="Например: Специална доставка, поръчка на различни модели..."
                 value={formData.note}
                 onChange={(e) => setFormData({ ...formData, note: e.target.value })}
                />

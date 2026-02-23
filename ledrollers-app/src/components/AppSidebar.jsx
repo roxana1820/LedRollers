@@ -42,7 +42,7 @@ export function AppSidebar() {
   }
 
   return (
-    <Sidebar className="z-[50]">
+    <Sidebar className="fixed top-0 left-0 h-screen z-[3000]">
       <SidebarHeader>
         <h2 className="px-4 py-4 text-xl md:text-lg font-semibold">LedRollers</h2>
       </SidebarHeader>
