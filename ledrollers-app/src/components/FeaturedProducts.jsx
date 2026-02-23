@@ -1,128 +1,81 @@
-import { useState } from 'react';
-import "../styles/FeaturedProducts.css";
-
-import whiteShoes from "../assets/white_shoes.png";
-import pinkShoes from "../assets/pink_shoes.png";
-import blackShoes from "../assets/black_shoes.png";
-import pinkShoes4 from "../assets/pink_shoes4.jpeg";
-import blueShoes4 from "../assets/blue_shoes4.jpeg";
+import { useState, useEffect } from 'react';
+import { products } from "../data/products";
+import '../styles/FeaturedProducts.css';
 
 const FeaturedProducts = () => {
-    const products = [
-        {
-            id: 1,
-            image: whiteShoes,
-            name: "Светещи бели ролери",
-            oldPrice: "47.00 €.",
-            price: "38.00 €"
-        },
-        {
-            id: 2,
-            image: pinkShoes,
-            name: "Светещи розови ролери",
-            oldPrice: "47.00 €.",
-            price: "38.00 €"
-        },
-        {
-            id: 3,
-            image: blackShoes,
-            name: "Светещи черни ролери",
-            oldPrice: "47.00 €.",
-            price: "38.00 €"
-        },
-        {
-            id: 4,
-            image: pinkShoes4,
-            name: "Светещи розови ролери - нов модел",
-            oldPrice: "65.00 €.",
-            price: "60.00 €"
-        },
-        {
-            id: 5,
-            image: blueShoes4,
-            name: "Светещи сини ролери - нов модел",
-            oldPrice: "65.00 €.",
-            price: "60.00 €"
-        }
-    ];
-
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [visible, setVisible] = useState(1);
 
-    const previousProduct = () => {
-       
-        if (currentIndex === 0) {
-           setCurrentIndex(products.length - 1);
-        }
-        else {
-            setCurrentIndex(currentIndex - 1);
-        }
-    }
+    useEffect(() => {
+        const updateVisible = () => {
+            if (window.innerWidth >= 900) setVisible(3);
+            else if (window.innerWidth >= 600) setVisible(2);
+            else setVisible(1);
+        };
+        updateVisible();
+        window.addEventListener('resize', updateVisible);
+        return () => window.removeEventListener('resize', updateVisible);
+    }, []);
 
-   const nextProduct = () => {
-        if (currentIndex === products.length - 1) {
-            setCurrentIndex(0); 
-        } else {
-            setCurrentIndex(currentIndex + 1); 
-        }
-    }
+    const prev = () => setCurrentIndex(i => i === 0 ? products.length - visible : i - 1);
+    const next = () => setCurrentIndex(i => i >= products.length - visible ? 0 : i + 1);
+
+    const cardWidth = `calc(${100 / visible}% - ${16 * (visible - 1) / visible}px)`;
+    const trackOffset = `calc(-${currentIndex} * (${100 / visible}% + ${16 / visible * (visible - 1) / (visible)}px))`;
 
     return (
-        <section className="featured-section">
-            <h2 className="featured-title">Популярни модели</h2>
+        <div className="featured-products">
+            <h2 className="featured-products-heading">Популярни модели</h2>
 
-            <div className="featured-container">
-                
-                <button className="arrow-btn left-arrow" onClick={previousProduct}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" 
-                    fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" 
-                    strokeLinejoin="round" className="arrow-icon">
-                        <path d="M15 18l-6-6 6-6" />
+            <div className="featured-products-carousel">
+                <button onClick={prev} className="featured-products-button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#333" strokeWidth="3">
+                        <path d="M15 18l-6-6 6-6"/>
                     </svg>
                 </button>
 
-                <div className="slider-window">
+                <div className="featured-products-window">
                     <div
-                        className="slider-track"
+                        className="featured-products-track"
                         style={{
-                             width: `${products.length * 100}%`,
-                             transform: `translateX(-${currentIndex * (100 / products.length)}%)`
+                            transform: `translateX(calc(-${currentIndex} * (100% / ${visible} + ${16 / visible}px)))`
                         }}
                     >
                         {products.map((product) => (
-                            <div className="product-card" key={product.id}>
-                                <div className="product-img-wrapper">
-                                    <img 
-                                        src={product.image} 
-                                        alt={product.name} 
-                                        className="product-image"
-                                    />
-                                    <div className="heart-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                                        </svg>
-                                    </div>
+                            <div
+                                className="featured-products-card"
+                                key={product.id}
+                                style={{ flex: `0 0 calc(${100 / visible}% - ${16 * (visible - 1) / visible}px)` }}
+                            >
+                                {product.isNew && <span className="featured-products-badge">Ново</span>}
+                                <div className="featured-products-image-wrapper">
+                                    <img src={product.images[0]} alt={product.name} />
                                 </div>
-
-                                <div className="product-info">
-                                    <h3 className="product-name">{product.name}</h3>
-                                    <div className="price-box">
-                                        <span className="old-price">{product.oldPrice}</span>
-                                        <span className="price">{product.price}</span>
-                                    </div>
-                                </div>
+                                <h3 className="featured-products-title">{product.name}</h3>
+                                <p className="featured-products-old-price">{product.oldPrice}</p>
+                                <p className="featured-products-price">{product.price}</p>
                             </div>
                         ))}
                     </div>
                 </div>
 
-                <button className="arrow-btn right-arrow" onClick={nextProduct}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="arrow-icon">
-                        <path d="M9 18l6-6-6-6" />
+                <button onClick={next} className="featured-products-button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#333" strokeWidth="3">
+                        <path d="M9 18l6-6-6-6"/>
                     </svg>
                 </button>
-
             </div>
-        </section>
+
+            <div className="featured-products-dots">
+                {products.map((_, i) => (
+                    <button
+                        key={i}
+                        onClick={() => setCurrentIndex(Math.min(i, products.length - visible))}
+                        className={`featured-products-dot ${i === currentIndex ? 'active' : ''}`}
+                    />
+                ))}
+            </div>
+        </div>
     );
 };
 
