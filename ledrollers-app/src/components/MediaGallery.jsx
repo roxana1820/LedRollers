@@ -61,7 +61,6 @@ const MediaGallery = () => {
         <div className="section-divider"></div>
         <h3 className="gallery-title">Лесна трансформация от обувки към ролери</h3>
 
-        {/* Video Item */}
         <div className="gallery-item video-item">
             <div className="media-wrapper video-wrapper">
                 <video
@@ -78,22 +77,6 @@ const MediaGallery = () => {
             </div>
         </div>
          
-        {/* Two-Wheel Items */}
-        {/*<h4 className="category-title">Модели с 2 колелца</h4>
-        <div className="gallery-grid">
-            {twoWheelsItems.map((item) => (
-                <Link to={item.linkTo} key={item.id} className="gallery-item">
-                    <div className="media-wrapper">
-                        <img src={item.src} alt={item.alt} className="media-content" />
-                        <div className="overlay">
-                            <span>{item.text}</span>
-                        </div>
-                    </div>
-                </Link>
-            ))}
-        </div>*/}
-
-        {/* Four-Wheel Items */}
         <h4 className="category-title">Модели с 4 колелца</h4>
 
         <div className="gallery-grid">
