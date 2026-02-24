@@ -52,11 +52,58 @@
 }
 
 .socials a:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(176, 128, 181, 0.2);
 }
 
-@media (max-width: 720px) {
+@media (min-width: 600px) and (max-width: 1023px){
   .site-footer {
-    gap: 0.5rem; 
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    text-align: left;
   }
+
+  .footer-left {
+    align-items: flex-start;
+  }
+
+  .footer-right {
+    align-items: flex-end;
+  }
+
+  .socials {
+        justify-content: flex-end;
+    }
+}
+
+@media (min-width: 1024px) {
+    .site-footer {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;          
+        padding: 2rem 2.5rem;        
+        gap: 0;
+    }
+
+    .footer-left {
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .footer-right {
+        align-items: flex-end;
+        text-align: right;
+    }
+
+    .copyright-block {
+        gap: 0.3rem;                  
+    }
+
+    .socials {
+        gap: 1rem;         
+    }
+
+    .socials a {
+        padding: 0.5rem 0.8rem;        
+    }
 }

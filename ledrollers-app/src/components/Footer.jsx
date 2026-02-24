@@ -8,8 +8,8 @@ function Footer() {
       <div className="footer-left">
         <div className="copyright-block">
           <p className="copyright">© LedRollers {year}</p>
-          <p className="rights">All rights reserved.</p>
-          <p className="contact">Контакти: 0888335992 / 0878345320</p>
+          <p className="rights">All rights reserved</p>
+          <p className="contact"><strong>Контакти: 0888335992 / 0878345320</strong></p>
         </div>
       </div>
 
