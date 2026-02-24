@@ -250,38 +250,38 @@
   align-self: center;
 }
 
-
 @media (min-width: 600px) and (max-width: 1023px) {
   .about-page {
-    padding: 20px 24px 60px;
+    padding: 30px 24px 60px;
   }
   
-  .about-videoWrap {
-    aspect-ratio: 13 / 7;
-  }
-
-  .about-video {
-    aspect-ratio: 15 /8;
-  }
-
-  .about-media {
-    padding: 20px;
-  }
-
   .about-title {
     font-size: 2.3rem;
   }
 
+  .about-video {
+    aspect-ratio: 16 / 9; 
+  }
+
+  .about-split {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .about-h2 {
+    text-align: center;
+    font-size: 1.3rem;
+  }
+
   .about-howGrid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; 
-    gap: 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .about-step {
-    width: calc(50% - 10px); 
-    flex-grow: 0;
+    width: 100%; 
   }
 
   .about-form {
@@ -290,9 +290,88 @@
     gap: 16px;
   }
 
+
   .about-inputGroup:nth-child(3), 
   .about-form .about-ctaBtn {
     grid-column: span 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-page {
+    max-width: 1100px;
+    padding: 40px 30px 80px;
+  }
+
+  .about-title {
+    font-size: 2.9rem; 
+  }
+
+  .about-media {
+    max-width: 800px; 
+    margin: 0 auto;   
+    padding: 20px;
+  }
+
+  .about-video {
+    max-height: 450px; 
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .about-split {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .about-howGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    gap: 24px;
+    margin-top: 20px;
+  }
+
+  .about-step {
+    width: calc(33.333% - 16px); 
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .about-h2 {
+    font-size: 1.8rem;
+  }
+
+  .about-stepMedia {
+    width: 100%;
+    height: auto;
+    margin-bottom: 12px;
+    aspect-ratio: 4/3;
+  }
+
+  .about-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 700px;
+  }
+
+  .about-stepTitle {
+    font-size: 1.2rem;
+  }
+
+  .about-inputGroup:nth-child(3), 
+  .about-form .about-ctaBtn {
+    grid-column: span 2;
+  }
+
+  .about-form .about-ctaBtn {
+    width: auto;
+    padding: 14px 50px;
+    margin-top: 20px;
   }
 }
 
