@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { products } from "../data/products";
+import { Link} from 'react-router-dom';
 import "../styles/ProductDetails.css";
 
 export default function ProductDetails() {
@@ -154,6 +155,31 @@ const handleSubmit = async (e) => {
          <p className="old-price">{product.oldPrice}</p>
         <p className="details-price">{product.price}</p>
 
+        <div className="details-description">
+          <p className="description-text">
+              {product.description ||
+               "Светещите маратонки с колелца са перфектната комбинация между стилни спортни обувки и ролери за деца."}
+            </p>
+          <p className="list-title"><strong>Комплектът включва:</strong></p>
+          <ul>
+            <li>1 чифт светещи маратонки</li>
+            <li>USB кабел за зареждане на светлините</li>
+            <li>2 бр. колелца</li>
+            <li>2 бр. предпазни тапички (за ползване без колелца)</li>
+            <li>1 бр. специална лопатка за лесно изваждане на колелцата</li>
+          </ul>
+          <p className="list-title"><strong>Защо да изберете този модел?</strong></p>
+            <ul>
+              <li>✅ Високо качество на изработка</li>
+              <li>✅ Удобни за ежедневно носене</li>
+              <li>✅ Модерен и стилен дизайн</li>
+            </ul>
+
+            <p className="learn-more-link">
+             💡 За въпроси относно поставяне на колелцата, можете да посетите секция <Link to="/about">"Научи повече"</Link>.
+            </p>
+        </div>
+
         <section className="about-card order-section">
           <h2 className="about-h2">Данни за поръчка</h2>
           <form className="about-form" onSubmit={handleSubmit}>
@@ -208,17 +234,17 @@ const handleSubmit = async (e) => {
                 onChange={(e) => setFormData({ ...formData, size: e.target.value })}
               >
                 <option value="">-- Изберете размер (стелка в см.) --</option>
-                <option value="30">30 </option>
-                <option value="31">31</option>
-                <option value="32">32</option>
-                <option value="33">33</option>
-                <option value="34">34</option>
-                <option value="35">35</option>
-                <option value="36">36</option>
-                <option value="37">37</option>
-                <option value="38">38</option>
-                <option value="39">39</option>
-                <option value="40">40</option>
+                <option value="30">30 (19 см.)</option>
+                <option value="31">31 (19,5 см.)</option>
+                <option value="32">32 (20 см.)</option>
+                <option value="33">33 (20,5 см.)</option>
+                <option value="34">34 (21 см.)</option>
+                <option value="35">35 (21,5 см.)</option>
+                <option value="36">36 (22 см.)</option>
+                <option value="37">37 (23 см.)</option>
+                <option value="38">38 (24 см.)</option>
+                <option value="39">39 (25 см.)</option>
+                <option value="40">40 (26 см.)</option>
               </select>
               {errors.size && (
                 <span className="error-text">{errors.size}</span>
