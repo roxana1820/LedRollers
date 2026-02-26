@@ -9,7 +9,11 @@ export default function Products({ categoryFilter }) {
   const getInitialProducts = () => {
     if (!categoryFilter)
       return products;
-    return products.filter(p => p.category === categoryFilter);
+
+    if(categoryFilter === 'no-rollers') {
+      return products.filter(p => p.hasRollers === false);
+    }
+    return products.filter(p => p.category === categoryFilter && p.hasRollers !== false);
   };
 
   const [sortedProducts, setSortedProducts] = useState(getInitialProducts);
@@ -70,6 +74,7 @@ export default function Products({ categoryFilter }) {
           <h2 className="models-heading">
             {categoryFilter === 'boy' ? 'Модели за момчета' :
               categoryFilter === 'girl' ? 'Модели за момичета' :
+              categoryFilter === 'no-rollers' ? 'Светещи маратонки без колелца' :
                 'Всички модели'}
           </h2>
 

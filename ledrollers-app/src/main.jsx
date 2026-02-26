@@ -65,6 +65,7 @@ function App() {
               path="/girls" 
               element={<Products categoryFilter="girl" />} 
             />
+            <Route path="/non-light-shoes" element={<Products categoryFilter="no-rollers" />} />
             <Route
               path="/about"
               element={<About />}
