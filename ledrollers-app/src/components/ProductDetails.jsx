@@ -8,6 +8,8 @@ export default function ProductDetails() {
   const { id } = useParams();
   const product = products.find(p => p.id === Number(id));
 
+  const isAutoRoller = product && (product.id === 1 || product.id === 3); // Предполага се, че продуктите с id 1 и 2 са автоматични ролери
+
   const [curentImage, setCurrentImage] = useState(0);
 
   const [formData, setFormData] = useState({
@@ -165,7 +167,7 @@ const handleSubmit = async (e) => {
               {product.description ||
                "Светещите маратонки с колелца са перфектната комбинация между стилни спортни обувки и ролери за деца."}
             </p>
-           {product.hasRollers !== false && (
+           {product.hasRollers !== false && !isAutoRoller &&(
     <>
            <p className="list-title"><strong>Комплектът включва:</strong></p>
              <ul>
@@ -178,7 +180,7 @@ const handleSubmit = async (e) => {
              <ul>
                <li>🔸 Високо качество на изработка</li>
                <li>🔸 Лесно зареждане с USB кабел</li>
-               <li>🔸 Удобни за ежедневно носене</li>
+               <li>🔸 Удобни за ежедневно носене като стандартни маратонки</li>
                <li>🔸 Модерен и стилен дизайн</li>
              </ul>
 
@@ -187,6 +189,21 @@ const handleSubmit = async (e) => {
             </p>
             </>
            )}
+
+            {isAutoRoller && (
+              <>
+               <p className="list-title"><strong>Характеристики на модела:</strong></p>
+              <ul>
+                <li>🔸 Бърз механизъм – колелцата се показват и прибират лесно само със завъртане на копчето</li>
+                <li>🔸 Лесно зареждане с USB кабел</li>
+                <li>🔸 Високо качество на изработка</li>
+                <li>🔸 Удобни за ежедневно носене като стандартни маратонки</li>
+                <li>🔸 Модерен и стилен дизайн</li>
+              </ul>
+              </>
+            )}
+          
+
            {product.hasRollers === false && (
             <>
               <p className="list-title"><strong>Светещи маратонки без колелца</strong></p>

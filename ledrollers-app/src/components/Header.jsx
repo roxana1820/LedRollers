@@ -5,9 +5,10 @@ import "../styles/Header.css";
 const Header = () => {
     return (
         <header className="header">
-            
-            <Link to="/" className="ledrollers-logo">LedRollers</Link>
-           
+            <a href="/" className="ledrollers-logo"onClick={(e) => {
+             e.preventDefault();
+            window.location.assign("/"); 
+            }}>LedRollers </a> 
         </header>
     );
 };

@@ -7,6 +7,7 @@ import pinkShoes4 from "../assets/pink_shoes4.jpeg";
 import blueShoes4 from "../assets/blue_shoes4.jpeg";
 import pinkShoes4Front from "../assets/pinkShoes4Front.png";
 import pinkShoes4Wheels from "../assets/pinkShoes4Wheels.png";
+import pinkShoes4New from "../assets/pinkShoes4New.png";
 import whiteShoes4Front from "../assets/whiteShoes4Front.png";
 import whiteShoes4Wheels from "../assets/whiteShoes4Wheels.png";
 
@@ -24,7 +25,7 @@ export const products = [
     name: "Светещи розови ролери",
     price: "60.00 €",
     oldPrice: "70.00 €",
-    images: [pinkShoes4],
+    images: [pinkShoes4,pinkShoes4New],
     isNew: true,
     category: "girl",
   },
@@ -41,13 +42,13 @@ export const products = [
     name: "Светещи сини ролери",
     price: "60.00 €",
     oldPrice: "70.00 €",
-    images: [blueShoes4,blackShoes],
+    images: [blueShoes4],
     isNew: true,
     category: "boy",
   },
   {
     id: 4,
-    name: "Светещи розови ролери",
+    name: "Светещи розови ролери с 4 колелца",
     price: "38.00 €",
     oldPrice: "47.00 €",
     images: [pinkShoes,pinkShoes4Front,pinkShoes4Wheels],
