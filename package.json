@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react-inner-image-zoom": "^4.0.1",
+    "react-medium-image-zoom": "^5.4.1"
+  }
+}
