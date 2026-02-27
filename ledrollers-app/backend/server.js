@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/send-order", async (req, res) => {
-  const { fullName, address, phone, size, quantity, note, product } = req.body;
+  const { fullName, email, address, phone, size, quantity, note, product } = req.body;
 
   try {
     const transporter = nodemailer.createTransport({
@@ -31,6 +31,7 @@ app.post("/send-order", async (req, res) => {
         <h2>Нова поръчка</h2>
         <p><strong>Продукт:</strong> ${product}</p>
         <p><strong>Име:</strong> ${fullName}</p>
+        <p><strong>Имейл:</strong> ${email || 'Не е посочен'}</p>
         <p><strong>Адрес:</strong> ${address}</p>
         <p><strong>Телефон:</strong> ${phone}</p>
         <p><strong>Размер:</strong> ${size}</p>
@@ -38,6 +39,32 @@ app.post("/send-order", async (req, res) => {
         <p><strong>Бележка:</strong> ${note}</p>
       `,
     });
+
+    if(email && email.includes("@")) { 
+      try {
+        await transporter.sendMail({
+          from: process.env.EMAIL_USER,
+          to: email,
+          subject: "Успешно приета поръчка",
+          html: `
+            <h2>Здравейте, ${fullName}!</h2>
+            <p>Вашата поръчка беше успешно приета. Благодарим ви, че избрахте нас!</p>
+            <h3>Вашата поръчка:</h3>
+            <ul>
+              <li><strong>Продукт:</strong> ${product}</li>
+              <li><strong>Размер:</strong> ${size}</li>
+              <li><strong>Брой:</strong> ${quantity}</li>
+              <li><strong>Адрес за доставка:</strong> ${address}</li>
+              <li><strong>Телефон:</strong> ${phone}</li>
+            </ul>
+            <p>Скоро ще се свържем с вас за потвърждение.</p>
+            <p>Поздрави,<br>Екипът ни</p>
+          `,
+        });
+      } catch (clientEmailError) {
+        console.error("Грешка при изпращане до клиента:", clientEmailError);
+      }
+    }
 
     res.status(200).json({ message: "Email изпратен успешно!" });
   } catch (error) {

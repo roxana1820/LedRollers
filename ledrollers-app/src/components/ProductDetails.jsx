@@ -12,6 +12,7 @@ export default function ProductDetails() {
 
   const [formData, setFormData] = useState({
     fullName: "",
+    email: "",
     address: "",
     phone: "",
     size: "",
@@ -42,7 +43,6 @@ const handleSubmit = async (e) => {
 
   const newErrors = {};
 
-  /*Phone validation */
   const phoneRegex = /^0[0-9]{9}$/;
   if(!phoneRegex.test(formData.phone)) {
     newErrors.phone = "Моля, въведете валиден телефонен номер!";
@@ -50,6 +50,10 @@ const handleSubmit = async (e) => {
 
   if(formData.fullName.trim().split(" ").length < 2) {
      newErrors.fullName = "Моля, въведете поне две имена!";
+  }
+
+  if(formData.email && !formData.email.includes("@")) {
+    newErrors.email = "Моля, въведете валиден имейл адрес!";
   }
 
   if(formData.address.trim().length < 6) {
@@ -85,6 +89,7 @@ const handleSubmit = async (e) => {
       setShowSuccess(true);
       setFormData ({
        fullName:"",
+       email: "",
        address: "",
        phone: "",
        size: "",
@@ -211,6 +216,20 @@ const handleSubmit = async (e) => {
               />
               {errors.fullName && (
                 <span className="error-text">{errors.fullName}</span>
+              )}
+            </div>
+
+            <div className="about-inputGroup">
+              <label className="about-label">Имейл (по желание)</label>
+              <input
+                type="email"
+                className="about-input"
+                placeholder="Въведете имейл за потвърждение"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              />
+              {errors.email && (
+                <span className="error-text">{errors.email}</span>
               )}
             </div>
 

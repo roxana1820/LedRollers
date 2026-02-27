@@ -34,7 +34,7 @@
 
 .featured-products-card {
     flex-shrink: 0;
-    background: white;
+    background: rgb(248, 241, 249);
     border-radius: 16px;
     padding: 20px;
     box-shadow: 0 0 20px rgba(80, 27, 111, 0.3);
