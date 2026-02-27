@@ -1,5 +1,5 @@
 .header {
-    background: rgba(228, 210, 248, 0.6);
+    background: rgba(194, 180, 213, 0.6);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
     position:fixed;
     top:0;
@@ -88,7 +88,7 @@
     gap:0;
     width: 70%;
     max-width: 300px;
-    background: linear-gradient(180deg, #211443 0%, #504488 100%);
+    background: rgba(194, 180, 213, 0.6);
     display: flex;
     flex-direction: column;
     padding-top: 80px;
