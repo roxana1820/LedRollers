@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import "../styles/MediaGallery.css";
 
-import presentShoes from "../assets/videos/present_shoes.MP4";
+import presentShoes from "../assets/videos/present_shoes.mp4";
 import blackShoes from "../assets/black_shoes.png";
 import pinkShoes44 from "../assets/pink_shoes44.png";
 import whiteShoes4 from "../assets/white_shoes4.png";
