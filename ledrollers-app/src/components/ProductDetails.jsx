@@ -8,7 +8,7 @@ export default function ProductDetails() {
   const { id } = useParams();
   const product = products.find(p => p.id === Number(id));
 
-  const isAutoRoller = product && (product.id === 1 || product.id === 3); // Предполага се, че продуктите с id 1 и 2 са автоматични ролери
+  const isAutoRoller = product && (product.id === 1 || product.id === 3); 
 
   const [curentImage, setCurrentImage] = useState(0);
 
@@ -74,7 +74,7 @@ const handleSubmit = async (e) => {
   setErrors({});
 
   try {
-    const response = await fetch("http://localhost:5000/send-order", {
+    const response = await fetch("https://ledrollers.onrender.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
