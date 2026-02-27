@@ -4,7 +4,7 @@ import "../styles/About.css"
 
 
 import pinkShoesVideo from "../assets/videos/pink_shoes.MP4"
-import blackShoesVideo from "../assets/videos/blackGreen_shoes.MP4"
+import blackShoesVideo from "../assets/videos/blackGreen_shoes.mp4"
 import wheels from "../assets/putting_wheels.jpeg"
 import firstStep from "../assets/steps/1_step.jpeg"
 import secondStep from "../assets/steps/2_step.jpeg"
