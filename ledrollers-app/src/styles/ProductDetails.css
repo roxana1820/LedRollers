@@ -553,7 +553,8 @@
   }
 
   
-  .about-inputGroup:nth-child(6) {
+  .about-inputGroup:nth-child(6),
+  .about-inputGroup:nth-child(7) {
     grid-column: 1 / -1; 
   }
 
