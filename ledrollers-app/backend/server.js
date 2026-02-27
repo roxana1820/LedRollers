@@ -14,6 +14,8 @@ app.get("/", (req, res) => {
 app.post("/send-order", async (req, res) => {
   const { fullName, email, address, phone, size, quantity, note, product } = req.body;
 
+  const clientIp = req.headers['x-forwarded-for']?.split(',').shift() || req.socket?.remoteAddress || req.ip;
+
   try {
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -37,6 +39,8 @@ app.post("/send-order", async (req, res) => {
         <p><strong>Размер:</strong> ${size}</p>
         <p><strong>Брой:</strong> ${quantity}</p>
         <p><strong>Бележка:</strong> ${note}</p>
+        <hr />
+        <p><small><strong>IP Адрес на клиента:</strong> ${clientIp}</small></p>
       `,
     });
 
@@ -58,7 +62,7 @@ app.post("/send-order", async (req, res) => {
               <li><strong>Телефон:</strong> ${phone}</li>
             </ul>
             <p>Скоро ще се свържем с вас за потвърждение.</p>
-            <p>Поздрави,<br>Екипът ни</p>
+            <p>Поздрави,<br>Екипът ни от LedRollers</p>
           `,
         });
       } catch (clientEmailError) {
