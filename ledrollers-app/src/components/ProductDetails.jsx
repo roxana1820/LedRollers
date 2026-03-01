@@ -72,7 +72,7 @@ const handleSubmit = async (e) => {
   }
 
   setErrors({});
-
+console.log("Submitting order:" + import.meta.env.VITE_SUBMIT_ORDER);
   try {
     const response = await fetch(import.meta.env.VITE_SUBMIT_ORDER, {
       method: "POST",
