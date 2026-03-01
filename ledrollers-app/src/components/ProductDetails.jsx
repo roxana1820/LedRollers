@@ -74,7 +74,7 @@ const handleSubmit = async (e) => {
   setErrors({});
 
   try {
-    const response = await fetch("https://ledrollers.onrender.com", {
+    const response = await fetch("https://ledrollers.onrender.com/send-order", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -99,11 +99,11 @@ const handleSubmit = async (e) => {
        note: ""
       });
     } else {
-      alert("Грешка при изпращане!");
+      alert("Сървърът не отговаря. За поръчка, моля свържете се с нас на телефон: 088 833 5992.");
     }
 
   } catch (error) {
-    alert("Сървърът не работи!");
+    alert("Сървърът не отговаря. За поръчка, моля свържете с нас на телефон: 088 833 5992.");
   }
 };
 
