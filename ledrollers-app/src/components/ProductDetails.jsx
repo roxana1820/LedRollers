@@ -74,7 +74,7 @@ const handleSubmit = async (e) => {
   setErrors({});
 
   try {
-    const response = await fetch("https://ledrollers-order-ckh7emaagafpbqcg.polandcentral-01.azurewebsites.net/api/order-submitted?code=15w-IuBCw6MD9msiWIxUE1vfgrUIdgAZsOSZxgdADJZGAzFuyZe3AQ==", {
+    const response = await fetch(import.meta.env.VITE_SUBMIT_ORDER, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -87,7 +87,7 @@ const handleSubmit = async (e) => {
         ItemSize: formData.size,
         Quantity: formData.quantity,
         AdditionalNotes: formData.note,
-        product: product.name,
+        Item: product.name,
         OrderDate: new Date().toISOString()
       }),
     });

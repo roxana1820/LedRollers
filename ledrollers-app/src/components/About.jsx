@@ -22,7 +22,7 @@ export default function About() {
   e.preventDefault();
 
   try {
-    const response = await fetch("https://ledrollers.onrender.com/send-contact", {
+    const response = await fetch(import.meta.process.env.VITE_CONTACT_US, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
