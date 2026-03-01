@@ -80,19 +80,17 @@ const handleSubmit = async (e) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        customerName : formData.fullName,
-        customerEmail: formData.email,
-        address: formData.address,
-        phoneNumber: formData.phone,
+        CustomerName : formData.fullName,
+        CustomerEmail: formData.email,
+        Address: formData.address,
+        PhoneNumber: formData.phone,
         ItemSize: formData.size,
-        quantity: formData.quantity,
+        Quantity: formData.quantity,
         AdditionalNotes: formData.note,
         product: product.name,
-        orderDate: new Date().toISOString()
+        OrderDate: new Date().toISOString()
       }),
     });
-
-    const data = await response.json();
 
     if (response.ok) {
       setShowSuccess(true);
