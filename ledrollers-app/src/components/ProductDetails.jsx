@@ -74,14 +74,21 @@ const handleSubmit = async (e) => {
   setErrors({});
 
   try {
-    const response = await fetch("https://ledrollers.onrender.com/send-order", {
+    const response = await fetch("https://ledrollers-order-ckh7emaagafpbqcg.polandcentral-01.azurewebsites.net/api/order-submitted?code=15w-IuBCw6MD9msiWIxUE1vfgrUIdgAZsOSZxgdADJZGAzFuyZe3AQ==", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        ...formData,
-        product: product.name
+        customerName : formData.fullName,
+        customerEmail: formData.email,
+        address: formData.address,
+        phoneNumber: formData.phone,
+        ItemSize: formData.size,
+        quantity: formData.quantity,
+        AdditionalNotes: formData.note,
+        product: product.name,
+        orderDate: new Date().toISOString()
       }),
     });
 
@@ -106,8 +113,6 @@ const handleSubmit = async (e) => {
     alert("Сървърът не отговаря. За поръчка, моля свържете с нас на телефон: 088 833 5992.");
   }
 };
-
-
 
   const increaseQty = () => {
    setFormData(prev => ({ ...prev,quantity: prev.quantity + 1}));
