@@ -22,7 +22,7 @@ export default function About() {
   e.preventDefault();
 
   try {
-    const response = await fetch("http://localhost:5000/send-contact", {
+    const response = await fetch("https://ledrollers.onrender.com/send-contact", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
