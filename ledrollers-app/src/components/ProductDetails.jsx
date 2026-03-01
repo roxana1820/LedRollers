@@ -323,6 +323,7 @@ const handleSubmit = async (e) => {
             </div>
 
             <p className="order-details">📦 Изпращаме поръчките <strong>с преглед и тест.</strong></p>
+            <p className="order-place">(Възможност за взимане на поръчки от място.)</p>
 
             <button type="submit" className="about-ctaBtn order-submit-btn">
               Поръчай сега
