@@ -28,6 +28,7 @@ export default function About() {
 
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [isLoading, setIsLoading] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,7 +47,7 @@ export default function About() {
       const data = await response.json();
 
       if (response.ok) {
-        alert("Благодарим ви! Съобщението е изпратено успешно.");
+        setShowSuccess(true);
         setFormData({ name: "", email: "", message: "" });
       } else {
         alert(data.message);
@@ -244,6 +245,19 @@ export default function About() {
             )}
           </button>
         </form>
+        
+        {showSuccess && (
+          <div className="success-overlay">
+              <div className="success-modal">
+                  <h2>✅ Запитването е изпратено успешно!</h2>
+                  <p>Ще се свържем с вас възможно най-скоро.</p>
+                  <button className="about-ctaBtn"
+                  onClick={() => setShowSuccess(false)}
+                  >Затвори</button>
+              </div>
+          </div>
+        )}
+
       </section>
     </main>
   )
