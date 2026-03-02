@@ -453,6 +453,11 @@
   }
 }
 
+@media (max-width: 599px) {
+  .arrow-left, .arrow-right {
+    display: none;
+  }
+}
 
 @media (min-width: 600px) and (max-width: 1023px) {
 
