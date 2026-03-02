@@ -1,5 +1,5 @@
 import { useEffect, useState} from "react"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import "../styles/About.css"
 
 
@@ -12,9 +12,19 @@ import thirdStep from "../assets/steps/3_step.jpeg"
 import fifthStep from "../assets/steps/5_step.jpeg"
 
 export default function About() {
+  
+  const location = useLocation();
+
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" })
-  }, [])
+    if (location.hash === '#contacts') {
+      window.scrollTo({
+        top: document.body.scrollHeight, 
+        behavior: 'smooth'
+      });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location]);
 
    const [formData, setFormData] = useState({ name: "", email: "",message: ""});
 
@@ -151,7 +161,7 @@ export default function About() {
         </div>
 
         <div className="about-ctaRow">
-          <Link to="/products/1" className="about-ctaBtn">
+          <Link to="/products" className="about-ctaBtn">
             Разгледай всички модели
           </Link>
         </div>
