@@ -59,7 +59,7 @@ export function AppSidebar() {
                 </CollapsibleTrigger>
                 <CollapsibleContent className="ml-4 mt-1 space-y-2">
                   <SidebarMenuButton size="text-sm" asChild>
-                    <Link to="/products/1" className="text-lg md:text-base" onClick={closeSidebar}>Всички модели</Link>
+                    <Link to="/products" className="text-lg md:text-base" onClick={closeSidebar}>Всички модели</Link>
                   </SidebarMenuButton>
                   <Collapsible open={isShoeTypesOpen} onOpenChange={setIsShoeTypesOpen}>
                     <CollapsibleTrigger asChild>
@@ -70,15 +70,15 @@ export function AppSidebar() {
                     </CollapsibleTrigger>
                     <CollapsibleContent className="ml-4 mt-2 space-y-2">
                       <SidebarMenuButton size="text-sm" asChild>
-                        <Link to="/boys" className="text-sm" onClick={closeSidebar}>За момчета</Link>
+                        <Link to="/products/boys" className="text-sm" onClick={closeSidebar}>За момчета</Link>
                       </SidebarMenuButton>
                       <SidebarMenuButton size="text-sm" asChild>
-                        <Link to="/girls" className="text-sm" onClick={closeSidebar}>За момичета</Link>
+                        <Link to="/products/girls" className="text-sm" onClick={closeSidebar}>За момичета</Link>
                       </SidebarMenuButton>
                     </CollapsibleContent>
                   </Collapsible>
                   <SidebarMenuButton size="text-sm" asChild>
-                    <Link to="/non-light-shoes" onClick={closeSidebar}>Светещи маратонки без колелца</Link>
+                    <Link to="/products/non-light-shoes" onClick={closeSidebar}>Светещи маратонки без колелца</Link>
                   </SidebarMenuButton>
                 </CollapsibleContent>
               </Collapsible>

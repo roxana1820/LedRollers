@@ -50,7 +50,7 @@ function App() {
               } 
             />
             <Route 
-              path="/products/:productId" 
+              path="/products" 
               element={<Products />} 
             />
              <Route 
@@ -58,14 +58,14 @@ function App() {
               element={<ProductDetails />} 
              />
             <Route 
-              path="/boys" 
+              path="/products/boys" 
               element={<Products categoryFilter="boy" />} 
             />
             <Route 
-              path="/girls" 
+              path="/products/girls" 
               element={<Products categoryFilter="girl" />} 
             />
-            <Route path="/non-light-shoes" element={<Products categoryFilter="no-rollers" />} />
+            <Route path="/products/non-light-shoes" element={<Products categoryFilter="no-rollers" />} />
             <Route
               path="/about"
               element={<About />}
