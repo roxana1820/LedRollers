@@ -1,14 +1,15 @@
-import React, { useState, useRef} from 'react';
+import React, { useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { products } from "../data/products";
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import "../styles/ProductDetails.css";
 
 export default function ProductDetails() {
+
   const { id } = useParams();
   const product = products.find(p => p.id === Number(id));
   const sliderRef = useRef(null);
-  const isAutoRoller = product && (product.id === 1 || product.id === 3); 
+  const isAutoRoller = product && (product.id === 1 || product.id === 3);
 
   const [currentImage, setCurrentImage] = useState(0);
 
@@ -22,7 +23,7 @@ export default function ProductDetails() {
       });
     }
   };
-   
+
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -34,7 +35,7 @@ export default function ProductDetails() {
     note: ""
   });
 
-  const[errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({});
   const [showSuccess, setShowSuccess] = useState(false);
 
   if (!product) return <p>Продуктът не е намерен.</p>;
@@ -54,7 +55,7 @@ export default function ProductDetails() {
       const scrollPosition = sliderRef.current.scrollLeft;
       const width = sliderRef.current.clientWidth;
       const activeIndex = Math.round(scrollPosition / width);
-      
+
       if (activeIndex !== currentImage) {
         setCurrentImage(activeIndex);
       }
@@ -62,105 +63,105 @@ export default function ProductDetails() {
   };
 
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const newErrors = {};
+    const newErrors = {};
 
-  const phoneRegex = /^0[0-9]{9}$/;
-  if(!phoneRegex.test(formData.phone)) {
-    newErrors.phone = "Моля, въведете валиден телефонен номер!";
-  }
-
-  if(formData.fullName.trim().split(" ").length < 2) {
-     newErrors.fullName = "Моля, въведете поне две имена!";
-  }
-
-  if(formData.email && !formData.email.includes("@")) {
-    newErrors.email = "Моля, въведете валиден имейл адрес!";
-  }
-
-  if(formData.address.trim().length < 6) {
-     newErrors.address = "Моля, въведете точен адрес за доставка!";
-  }
-
-   if (!formData.size) {
-    newErrors.size = "Моля, изберете размер!";
-  }
-
-  if(Object.keys(newErrors).length > 0) {
-    setErrors(newErrors);
-    return;
-  }
-
-  setErrors({});
-console.log("Submitting order:" + import.meta.env.VITE_SUBMIT_ORDER);
-  try {
-    const response = await fetch(import.meta.env.VITE_SUBMIT_ORDER, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        CustomerName : formData.fullName,
-        CustomerEmail: formData.email,
-        Address: formData.address,
-        PhoneNumber: formData.phone,
-        ItemSize: formData.size,
-        Quantity: formData.quantity,
-        AdditionalNotes: formData.note,
-        Item: product.name,
-        OrderDate: new Date().toISOString()
-      }),
-    });
-
-    if (response.ok) {
-      setShowSuccess(true);
-      setFormData ({
-       fullName:"",
-       email: "",
-       address: "",
-       phone: "",
-       size: "",
-       quantity: 1,
-       note: ""
-      });
-    } else {
-      alert("Сървърът не отговаря. За поръчка, моля свържете се с нас на телефон: 088 833 5992.");
+    const phoneRegex = /^0[0-9]{9}$/;
+    if (!phoneRegex.test(formData.phone)) {
+      newErrors.phone = "Моля, въведете валиден телефонен номер!";
     }
 
-  } catch (error) {
-    alert("Сървърът не отговаря. За поръчка, моля свържете с нас на телефон: 088 833 5992.");
-  }
-};
+    if (formData.fullName.trim().split(" ").length < 2) {
+      newErrors.fullName = "Моля, въведете поне две имена!";
+    }
+
+    if (formData.email && !formData.email.includes("@")) {
+      newErrors.email = "Моля, въведете валиден имейл адрес!";
+    }
+
+    if (formData.address.trim().length < 6) {
+      newErrors.address = "Моля, въведете точен адрес за доставка!";
+    }
+
+    if (!formData.size) {
+      newErrors.size = "Моля, изберете размер!";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setErrors({});
+    console.log("Submitting order:" + import.meta.env.VITE_SUBMIT_ORDER);
+    try {
+      const response = await fetch(import.meta.env.VITE_SUBMIT_ORDER, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          CustomerName: formData.fullName,
+          CustomerEmail: formData.email,
+          Address: formData.address,
+          PhoneNumber: formData.phone,
+          ItemSize: formData.size,
+          Quantity: formData.quantity,
+          AdditionalNotes: formData.note,
+          Item: product.name,
+          OrderDate: new Date().toISOString()
+        }),
+      });
+
+      if (response.ok) {
+        setShowSuccess(true);
+        setFormData({
+          fullName: "",
+          email: "",
+          address: "",
+          phone: "",
+          size: "",
+          quantity: 1,
+          note: ""
+        });
+      } else {
+        alert("Сървърът не отговаря. За поръчка, моля свържете се с нас на телефон: 088 833 5992.");
+      }
+
+    } catch (error) {
+      alert("Сървърът не отговаря. За поръчка, моля свържете с нас на телефон: 088 833 5992.");
+    }
+  };
 
   const increaseQty = () => {
-   setFormData(prev => ({ ...prev,quantity: prev.quantity + 1}));
+    setFormData(prev => ({ ...prev, quantity: prev.quantity + 1 }));
   };
 
   const decreaseQty = () => {
-   setFormData(prev => ({...prev,quantity: prev.quantity > 1 ? prev.quantity - 1 : 1}));
+    setFormData(prev => ({ ...prev, quantity: prev.quantity > 1 ? prev.quantity - 1 : 1 }));
   };
 
   return (
     <div className="product-details">
       <div className="details-media">
         <div className="image-gallery">
-          
+
           <div className="gallery-frame">
             <button className="arrow-left" onClick={prevImage} type="button">◀</button>
-        
-            <div 
-              className="gallery-slider" 
-              ref={sliderRef}              
-              onScroll={handleScroll}      
+
+            <div
+              className="gallery-slider"
+              ref={sliderRef}
+              onScroll={handleScroll}
             >
               {product.images.map((img, index) => (
-                <img 
-                  key={index} 
-                  src={img} 
-                  alt={`${product.name} ${index}`} 
-                  className="details-image" 
+                <img
+                  key={index}
+                  src={img}
+                  alt={`${product.name} ${index}`}
+                  className="details-image"
                 />
               ))}
             </div>
@@ -185,40 +186,40 @@ console.log("Submitting order:" + import.meta.env.VITE_SUBMIT_ORDER);
 
       <div className="details-content">
         <h1 className="details-title">{product.name}</h1>
-         <p className="old-price">{product.oldPrice}</p>
+        <p className="old-price">{product.oldPrice}</p>
         <p className="details-price">{product.price}</p>
 
         <div className="details-description">
           <p className="description-text">
-              {product.description ||
-               "Светещите маратонки с колелца са перфектната комбинация между стилни спортни обувки и ролери за деца."}
-            </p>
-           {product.hasRollers !== false && !isAutoRoller &&(
-    <>
-           <p className="list-title"><strong>Комплектът включва:</strong></p>
-             <ul>
-               <li>🔸 USB кабел за зареждане на маратонките</li>
-               <li>🔸 2 бр. колелца</li>
-               <li>🔸 2 бр. предпазни тапички (за ползване без колелца)</li>
-               <li>🔸 1 бр. специална лопатка за изваждане на колелцата</li>
-             </ul>
-           <p className="list-title"><strong>Защо да изберете този модел?</strong></p>
-             <ul>
-               <li>🔸 Високо качество на изработка</li>
-               <li>🔸 Лесно зареждане с USB кабел</li>
-               <li>🔸 Удобни за ежедневно носене като стандартни маратонки</li>
-               <li>🔸 Модерен и стилен дизайн</li>
-             </ul>
+            {product.description ||
+              "Светещите маратонки с колелца са перфектната комбинация между стилни спортни обувки и ролери за деца."}
+          </p>
+          {product.hasRollers !== false && !isAutoRoller && (
+            <>
+              <p className="list-title"><strong>Комплектът включва:</strong></p>
+              <ul>
+                <li>🔸 USB кабел за зареждане на маратонките</li>
+                <li>🔸 2 бр. колелца</li>
+                <li>🔸 2 бр. предпазни тапички (за ползване без колелца)</li>
+                <li>🔸 1 бр. специална лопатка за изваждане на колелцата</li>
+              </ul>
+              <p className="list-title"><strong>Защо да изберете този модел?</strong></p>
+              <ul>
+                <li>🔸 Високо качество на изработка</li>
+                <li>🔸 Лесно зареждане с USB кабел</li>
+                <li>🔸 Удобни за ежедневно носене като стандартни маратонки</li>
+                <li>🔸 Модерен и стилен дизайн</li>
+              </ul>
 
-            <p className="learn-more-link">
-             💡 За въпроси относно поставяне на колелцата, можете да посетите секция <Link to="/about">"Научи повече"</Link>.
-            </p>
+              <p className="learn-more-link">
+                💡 За въпроси относно поставяне на колелцата, можете да посетите секция <Link to="/about">"Научи повече"</Link>.
+              </p>
             </>
-           )}
+          )}
 
-            {isAutoRoller && (
-              <>
-               <p className="list-title"><strong>Характеристики на модела:</strong></p>
+          {isAutoRoller && (
+            <>
+              <p className="list-title"><strong>Характеристики на модела:</strong></p>
               <ul>
                 <li>🔸 Бърз механизъм – колелцата се показват и прибират лесно само със завъртане и натискане на копчето</li>
                 <li>🔸 Лесно зареждане с USB кабел</li>
@@ -226,28 +227,28 @@ console.log("Submitting order:" + import.meta.env.VITE_SUBMIT_ORDER);
                 <li>🔸 Удобни за ежедневно носене като стандартни маратонки</li>
                 <li>🔸 Модерен и стилен дизайн</li>
               </ul>
-              </>
-            )}
-          
+            </>
+          )}
 
-           {product.hasRollers === false && (
+
+          {product.hasRollers === false && (
             <>
               <p className="list-title"><strong>Светещи маратонки без колелца</strong></p>
-                <ul>
-                    <li>🔸 Високо качество на изработка</li>
-                    <li>🔸 Лесно зареждане с USB кабел</li>
-                    <li>🔸 Удобни за ежедневно носене</li>
-                    <li>🔸 Модерен и стилен дизайн</li>
-                </ul>
+              <ul>
+                <li>🔸 Високо качество на изработка</li>
+                <li>🔸 Лесно зареждане с USB кабел</li>
+                <li>🔸 Удобни за ежедневно носене</li>
+                <li>🔸 Модерен и стилен дизайн</li>
+              </ul>
             </>
-           )}
+          )}
 
         </div>
 
         <section className="about-card order-section">
           <h2 className="about-h2">Данни за поръчка</h2>
           <form className="about-form" onSubmit={handleSubmit}>
-            
+
             <div className="about-inputGroup">
               <label className="about-label">Две имена</label>
               <input
@@ -300,8 +301,8 @@ console.log("Submitting order:" + import.meta.env.VITE_SUBMIT_ORDER);
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               />
               {errors.phone && (
-                 <span className="error-text">{errors.phone}</span>
-               )}
+                <span className="error-text">{errors.phone}</span>
+              )}
             </div>
 
             <div className="about-inputGroup">
@@ -330,26 +331,32 @@ console.log("Submitting order:" + import.meta.env.VITE_SUBMIT_ORDER);
             </div>
 
             <div className="about-inputGroup">
-                <label className="about-label">Брой</label>
-                <div className="quantity-selector">
-                    <button type="button" className="qty-btn" onClick={decreaseQty}>-</button>
-                    <div className="qty-number">{formData.quantity}</div>
-                    <button type="button" className="qty-btn" onClick={increaseQty}>+</button>
-                </div>
+              <label className="about-label">Брой</label>
+              <div className="quantity-selector">
+                <button type="button" className="qty-btn" onClick={decreaseQty}>-</button>
+                <div className="qty-number">{formData.quantity}</div>
+                <button type="button" className="qty-btn" onClick={increaseQty}>+</button>
+              </div>
             </div>
 
             <div className="about-inputGroup">
-                 <label className="about-label">Бележка за поръчката</label>
-                 <textarea
-                 className="about-input"
+              <label className="about-label">Бележка за поръчката</label>
+              <textarea
+                className="about-input"
                 placeholder="Например: Специална доставка, поръчка на различни модели..."
                 value={formData.note}
                 onChange={(e) => setFormData({ ...formData, note: e.target.value })}
-               />
+              />
             </div>
 
             <p className="order-details">📦 Изпращаме поръчките <strong>с преглед и тест.</strong></p>
-            <p className="order-place">(Възможност за взимане на поръчки от място.)</p>
+            <p className="order-place" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px' }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              Възможност за взимане на поръчки от място.
+            </p>
 
             <button type="submit" className="about-ctaBtn order-submit-btn">
               Поръчай сега
@@ -358,34 +365,34 @@ console.log("Submitting order:" + import.meta.env.VITE_SUBMIT_ORDER);
 
           {showSuccess && (
             <div className="success-overlay">
-                <div className="success-modal">
-                    <h2>✅ Поръчката е изпратена успешно!</h2>
-                    <p>Ще се свържем с вас възможно най-скоро.</p>
-                    <button className="about-ctaBtn"
-                    onClick={() => setShowSuccess(false)}
-                    >Затвори</button>
-                </div>
+              <div className="success-modal">
+                <h2>✅ Поръчката е изпратена успешно!</h2>
+                <p>Ще се свържем с вас възможно най-скоро.</p>
+                <button className="about-ctaBtn"
+                  onClick={() => setShowSuccess(false)}
+                >Затвори</button>
+              </div>
             </div>
           )}
 
-        <div className="quick-order-container">
+          <div className="quick-order-container">
             <div className="quick-order-divider">
-                <span>Или</span>
+              <span>Или</span>
             </div>
             <h3 className="quick-order-title">
-                <span className="phone-icon">📞</span> Бърза поръчка чрез телефон
+              <span className="phone-icon">📞</span> Бърза поръчка чрез телефон
             </h3>
 
             <div className="phone-links">
-                 <a href="tel:+359888335992" className="phone-number">0888335992</a>
-                <a href="tel:+359878345320" className="phone-number">0878345320</a>
+              <a href="tel:+359888335992" className="phone-number">0888335992</a>
+              <a href="tel:+359878345320" className="phone-number">0878345320</a>
             </div>
             <p className="quick-order-note">Работно време:
-                Понеделник - Неделя (09:00ч. - 21:00ч.)
+              Понеделник - Неделя (09:00ч. - 21:00ч.)
             </p>
-        </div>
-        
-          
+          </div>
+
+
         </section>
       </div>
     </div>
