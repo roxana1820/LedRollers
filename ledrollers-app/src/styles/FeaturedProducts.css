@@ -23,17 +23,22 @@
 
 .featured-products-window {
     flex: 1;
-    overflow: hidden;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; 
+    scroll-behavior: smooth; 
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
 }
+
 
 .featured-products-track {
     display: flex;
     gap: 16px;
-    transition: transform 0.4s ease;
 }
 
 .featured-products-card {
     flex-shrink: 0;
+    scroll-snap-align: start;
     background: rgb(248, 241, 249);
     border-radius: 16px;
     padding: 20px;
