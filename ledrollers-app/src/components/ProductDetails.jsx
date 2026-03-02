@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef} from 'react';
 import { useParams } from 'react-router-dom';
 import { products } from "../data/products";
 import { Link} from 'react-router-dom';
@@ -7,10 +7,22 @@ import "../styles/ProductDetails.css";
 export default function ProductDetails() {
   const { id } = useParams();
   const product = products.find(p => p.id === Number(id));
-
+  const sliderRef = useRef(null);
   const isAutoRoller = product && (product.id === 1 || product.id === 3); 
 
-  const [curentImage, setCurrentImage] = useState(0);
+  const [currentImage, setCurrentImage] = useState(0);
+
+  const scrollToImage = (index) => {
+    setCurrentImage(index);
+    if (sliderRef.current) {
+      const slider = sliderRef.current;
+      const scrollAmount = slider.clientWidth * index;
+      slider.scrollTo({
+        left: scrollAmount,
+      });
+    }
+  };
+   
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -28,15 +40,25 @@ export default function ProductDetails() {
   if (!product) return <p>Продуктът не е намерен.</p>;
 
   const nextImage = () => {
-    setCurrentImage((prev) =>
-      prev === product.images.length - 1 ? 0 : prev + 1
-    );
+    const nextIndex = currentImage === product.images.length - 1 ? 0 : currentImage + 1;
+    scrollToImage(nextIndex);
   };
 
   const prevImage = () => {
-    setCurrentImage((prev) =>
-      prev === 0 ? product.images.length - 1 : prev - 1
-    );
+    const prevIndex = currentImage === 0 ? product.images.length - 1 : currentImage - 1;
+    scrollToImage(prevIndex);
+  };
+
+  const handleScroll = () => {
+    if (sliderRef.current) {
+      const scrollPosition = sliderRef.current.scrollLeft;
+      const width = sliderRef.current.clientWidth;
+      const activeIndex = Math.round(scrollPosition / width);
+      
+      if (activeIndex !== currentImage) {
+        setCurrentImage(activeIndex);
+      }
+    }
   };
 
 
@@ -130,7 +152,8 @@ console.log("Submitting order:" + import.meta.env.VITE_SUBMIT_ORDER);
         
             <div 
               className="gallery-slider" 
-              style={{ transform: `translateX(-${curentImage * 100}%)` }}
+              ref={sliderRef}              
+              onScroll={handleScroll}      
             >
               {product.images.map((img, index) => (
                 <img 
@@ -151,8 +174,8 @@ console.log("Submitting order:" + import.meta.env.VITE_SUBMIT_ORDER);
                 key={index}
                 src={img}
                 alt="thumb"
-                className={`thumbnail ${curentImage === index ? "active" : ""}`}
-                onClick={() => setCurrentImage(index)}
+                className={`thumbnail ${currentImage === index ? "active" : ""}`}
+                onClick={() => scrollToImage(index)}
               />
             ))}
           </div>
