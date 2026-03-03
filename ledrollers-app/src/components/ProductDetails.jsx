@@ -253,59 +253,63 @@ export default function ProductDetails() {
           <form className="about-form" onSubmit={handleSubmit}>
 
             <div className="about-inputGroup">
-              <label className="about-label">Две имена</label>
+              <label htmlFor="fullName" className="about-label">Две имена</label>
               <input
+                id="fullName"
+                name="fullName"
+                autoComplete="name"
                 type="text"
                 className="about-input"
                 placeholder="Име и фамилия"
                 value={formData.fullName}
                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
               />
-              {errors.fullName && (
-                <span className="error-text">{errors.fullName}</span>
-              )}
+              {errors.fullName && <span className="error-text">{errors.fullName}</span>}
             </div>
 
             <div className="about-inputGroup">
-              <label className="about-label">Имейл (по желание)</label>
+              <label htmlFor="email" className="about-label">Имейл (по желание)</label>
               <input
+                id="email"
+                name="email"
+                autoComplete="email"
                 type="email"
                 className="about-input"
                 placeholder="Въведете имейл за потвърждение"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               />
-              {errors.email && (
-                <span className="error-text">{errors.email}</span>
-              )}
+              {errors.email && <span className="error-text">{errors.email}</span>}
             </div>
 
             <div className="about-inputGroup">
-              <label className="about-label">Адрес за доставка</label>
+              <label htmlFor="address" className="about-label">Адрес за доставка</label>
               <input
+                id="address"
+                name="address"
+                autoComplete="street-address"
                 type="text"
                 className="about-input"
                 placeholder="Град, офис или адрес"
                 value={formData.address}
                 onChange={(e) => setFormData({ ...formData, address: e.target.value })}
               />
-              {errors.address && (
-                <span className="error-text">{errors.address}</span>
-              )}
+              {errors.address && <span className="error-text">{errors.address}</span>}
             </div>
 
             <div className="about-inputGroup">
-              <label className="about-label">Телефонен номер</label>
+              <label htmlFor="phone" className="about-label">Телефонен номер</label>
               <input
+                id="phone"
+                name="phone"
+                autoComplete="tel"
                 type="tel"
                 className="about-input"
                 placeholder="08XXXXXXXX"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               />
-              {errors.phone && (
-                <span className="error-text">{errors.phone}</span>
-              )}
+              {errors.phone && <span className="error-text">{errors.phone}</span>}
             </div>
 
             <div className="about-inputGroup">
