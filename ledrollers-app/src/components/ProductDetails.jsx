@@ -9,7 +9,7 @@ export default function ProductDetails() {
   const { id } = useParams();
   const product = products.find(p => p.id === Number(id));
   const sliderRef = useRef(null);
-  const isAutoRoller = product && (product.id === 1 || product.id === 3);
+  const isAutoRoller = product && (product.id === 4 || product.id === 5);
 
   const [currentImage, setCurrentImage] = useState(0);
 
