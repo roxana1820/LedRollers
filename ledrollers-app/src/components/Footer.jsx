@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/Footer.css';
 
 function Footer() {
@@ -10,9 +11,9 @@ function Footer() {
         <p className="rights">All rights reserved</p>
         <p className="contact">Контакти: 0888335992 / 0878345320</p>
         <div className="footer-policies">
-          <a href="/privacy-policy">Политика за поверителност</a>
+          <Link to="/privacy-policy">Политика за поверителност</Link>
           <span> | </span>
-          <a href="/cookie-policy">Политика за бисквитки</a>
+          <Link to="/terms">Общи условия и правила</Link>
         </div>
       </div>
       <div className="socials">

@@ -1,0 +1,30 @@
+.policy-page {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  line-height: 1.5;
+  color: #2b1638;
+  font-size: 1rem;
+}
+
+.policy-page h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.policy-page h2 {
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+
+.policy-page h3 {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.policy-page .update-date {
+  font-style: italic;
+  margin-bottom: 1rem;
+}

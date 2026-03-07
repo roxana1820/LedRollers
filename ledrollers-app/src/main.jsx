@@ -15,6 +15,9 @@ import Footer from './components/Footer';
 import Products from './components/Products';
 import ProductDetails from './components/ProductDetails';
 import About from './components/About';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import CookiePolicy from './components/CookiePolicy';
+import TermsAndConditions from './components/TermsAndConditions';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
@@ -70,6 +73,16 @@ function App() {
               path="/about"
               element={<About />}
             />
+            <Route
+              path="/privacy-policy"
+              element={<PrivacyPolicy />}
+            />
+            <Route path="/cookies"
+             element={<CookiePolicy />} 
+             />
+             <Route path="/terms" 
+             element={<TermsAndConditions />} 
+             />
           </Routes>
           <Footer />
         </div>
