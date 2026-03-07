@@ -93,7 +93,7 @@ export default function ProductDetails() {
     }
 
     if(!agreedToTerms) {
-      newErrors.terms = "Трябва да се съгласите с общите условия и Политика за сигурност, за да продължите!";
+      newErrors.agreed = "Трябва да се съгласите с общите условия и Политика за сигурност, за да поръчате!";
     }
 
     if (Object.keys(newErrors).length > 0) {
