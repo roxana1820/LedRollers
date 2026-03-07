@@ -34,6 +34,8 @@ export default function ProductDetails() {
     quantity: 1,
     note: ""
   });
+  
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
 
   const [errors, setErrors] = useState({});
   const [showSuccess, setShowSuccess] = useState(false);
@@ -90,6 +92,10 @@ export default function ProductDetails() {
       newErrors.size = "Моля, изберете размер!";
     }
 
+    if(!agreedToTerms) {
+      newErrors.terms = "Трябва да се съгласите с общите условия и Политика за сигурност, за да продължите!";
+    }
+
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
@@ -127,6 +133,7 @@ export default function ProductDetails() {
           quantity: 1,
           note: ""
         });
+        setAgreedToTerms(false);
       } else {
         alert("Сървърът не отговаря. За поръчка, моля свържете се с нас на телефон: 088 833 5992.");
       }
@@ -376,8 +383,24 @@ export default function ProductDetails() {
               />
             </div>
 
+            <div className="about-inputGroup terms-group">
+              <label className="terms-label">
+                <input
+                  type="checkbox"
+                  checked={agreedToTerms}
+                  onChange={(e) => setAgreedToTerms(e.target.checked)}
+                  className="terms-checkbox"
+                />
+                <span className="terms-text">
+                  Запознах се и съм съгласен с <Link to="/terms" className="terms-link" target="_blank">Общите условия</Link> и <Link to="/privacy-policy" className="terms-link" target="_blank">Политиката за поверителност</Link>.
+                </span>
+              </label>
+              {errors.agreed && <span className="error-text terms-error">{errors.agreed}</span>}
+            </div>
+
             <p className="order-details">📦 Изпращаме поръчките <strong>с преглед и тест.</strong></p>
             <p className="order-place">📍 Възможност за взимане на поръчки от място.</p>
+
 
             <button type="submit" className="about-ctaBtn order-submit-btn"
               disabled={isLoading}
