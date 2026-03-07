@@ -6,21 +6,17 @@ function CookiePolicy() {
     const containerRef = useRef(null);
 
     useEffect(() => {
-        const script = document.createElement('script');
-    script.id = 'CookieDeclaration';
-    script.src = 'https://consent.cookiebot.com/a0f494f2-0c16-46e9-8561-9560fb9853b1/cd.js';
-    script.type = 'text/javascript';
-    script.async = true;
+        if(containerRef.current) {
+          containerRef.current.innerHTML ='';
 
-    if (containerRef.current) {
-        containerRef.current.appendChild(script);
-    }
-
-    return () => {
-      if (containerRef.current && script.parentNode) {
-        containerRef.current.removeChild(script);
-      }
-    };
+          const script = document.createElement('script');
+          script.id = 'CookieDeclaration';
+            script.src = 'https://consent.cookiebot.com/a0f494f2-0c16-46e9-8561-9560fb9853b1/cd.js';
+            script.type = 'text/javascript';
+            script.async = true;
+            
+            containerRef.current.appendChild(script);
+        }
   }, []);
      
   return (
