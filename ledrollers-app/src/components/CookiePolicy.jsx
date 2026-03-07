@@ -14,6 +14,7 @@ function CookiePolicy() {
             script.src = 'https://consent.cookiebot.com/a0f494f2-0c16-46e9-8561-9560fb9853b1/cd.js';
             script.type = 'text/javascript';
             script.async = true;
+            script.setAttribute('data-culture', 'BG');
             
             containerRef.current.appendChild(script);
         }
@@ -21,14 +22,14 @@ function CookiePolicy() {
      
   return (
     <main className="policy-page">
-      <h1>Политика за бисквитки (Cookie Policy)</h1>
+      <h1>Политика за бисквитки</h1>
       <p>
         По-долу можете да се запознаете подробно с това какви бисквитки използваме на нашия сайт 
         (www.ledrollers.com), за какво служат те, както и да промените или оттеглите своето съгласие 
         по всяко време.
       </p>
 
-      <div ref={containerRef} className="cookiebot-container"></div>
+      <div ref={containerRef} className="cookiebot-container" style={{ marginTop: '50px' }}></div>
     </main>
   );
 }
