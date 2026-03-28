@@ -22,7 +22,7 @@ const MediaGallery = () => {
             id: 5,
             src: pinkShoes44, 
             alt: "Розови с 4 колелца",
-            linkTo: '/product/2',
+            linkTo: '/product/3',
             text: "Розов модел (4 колелца)"
         },
         {
@@ -36,7 +36,7 @@ const MediaGallery = () => {
             id: 7,
             src: blackShoes,
             alt: "Черни с 4 колелца",
-            linkTo: '/product/3',
+            linkTo: '/product/2',
             text: "Черен модел (4 колелца)"
         },
         {
