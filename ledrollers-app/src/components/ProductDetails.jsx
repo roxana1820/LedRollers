@@ -320,8 +320,9 @@ export default function ProductDetails() {
             </div>
 
             <div className="about-inputGroup">
-              <label className="about-label">Изберете размер</label>
+              <label htmlFor="size"className="about-label">Изберете размер</label>
               <select
+                id="size"
                 className="about-input"
                 value={formData.size}
                 onChange={(e) => setFormData({ ...formData, size: e.target.value })}
