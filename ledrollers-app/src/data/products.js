@@ -10,6 +10,11 @@ import pinkShoes4Wheels from "../assets/pinkShoes4Wheels.png";
 import pinkShoes4New from "../assets/pinkShoes4New.png";
 import whiteShoes4Front from "../assets/whiteShoes4Front.png";
 import whiteShoes4Wheels from "../assets/whiteShoes4Wheels.png";
+import pinkShoes60 from "../assets/pinkShoes60.jpeg";
+import pinkShoes602 from "../assets/pinkShoes602.jpeg";
+import blueShoes60 from "../assets/blueShoes60.jpeg";
+import newPinkNike from "../assets/newPinkModel.png";
+import newBlackNike from "../assets/newBlackModel.png";
 
 import lightGirlShoes1 from "../assets/LedShoesWithoutRollers/lightGirlShoes1.png";
 import lightGirlShoes2 from "../assets/LedShoesWithoutRollers/lightGirlShoes2.jpeg";
@@ -50,7 +55,7 @@ export const products = [
     name: "Светещи розови ролери",
     price: "60.00 €",
     oldPrice: "80.00 €",
-    images: [pinkShoes4,pinkShoes4New],
+    images: [pinkShoes4,pinkShoes60,pinkShoes602,pinkShoes4New],
     isNew: true,
     category: "girl",
   },
@@ -59,12 +64,30 @@ export const products = [
     name: "Светещи сини ролери",
     price: "60.00 €",
     oldPrice: "80.00 €",
-    images: [blueShoes4],
+    images: [blueShoes4,blueShoes60],
     isNew: true,
     category: "boy",
   },
   {
     id: 6,
+    name: "Светещи ролери с 4 колелца",
+    price: "38.00 €",
+    oldPrice: "55.00 €",
+    images: [newPinkNike],
+    category: "girl",
+    isNew: true,
+  },
+  {
+    id: 7,
+    name: "Светещи черни ролери с 4 колелца",
+    price: "38.00 €",
+    oldPrice: "55.00 €",
+    images: [newBlackNike],
+    category: "boy",
+    isNew: true,
+  },
+  {
+    id: 8,
     name: "Светещи маратонки за момичета",
     price: "23.00 €",
     oldPrice: "38.00 €",
@@ -73,9 +96,10 @@ export const products = [
     isNew: true,
     hasRollers: false,
   },
+  
   {
-    id: 7,
-    name: "Светещи бели ролери",
+    id: 9,
+    name: "Светещи маратонки за момчета",
     price: "23.00 €",
     oldPrice: "38.00 €",
     images: [lightShoesBoy1,lightShoesBoy2,lightShoesBoy3,lightShoesBoy4],
