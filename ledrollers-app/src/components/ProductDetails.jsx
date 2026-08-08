@@ -330,19 +330,14 @@ export default function ProductDetails() {
                 <option value="">-- Изберете размер (стелка в см.) --</option>
                 {product.hasRollers === false ? (
                   <>
-                    <option value="25">25.5 (15,7 см.)</option>
-                    <option value="26">26.5 (16,3 см.)</option>
-                    <option value="27">27 (17 см.)</option>
-                    <option value="28">28 (17,5 см.)</option>
-                    <option value="29">29 (18,3 см.)</option>
+                    <option value="25">25 (16.5 см.)</option>
+                    <option value="26">26 (17 см.)</option>
+                    <option value="27">27 (17.5 см.)</option>
+                    <option value="28">28 (18 см.)</option>
+                    <option value="29">29 (18.5 см.)</option>
                     <option value="30">30 (19 см.)</option>
                     <option value="31">31 (19,5 см.)</option>
-                    <option value="32">32 (20,3 см.)</option>
-                    <option value="33">33.5 (21 см.)</option>
-                    <option value="34">34 (21,5 см.)</option>
-                    <option value="35">35 (22 см.)</option>
-                    <option value="35.5">35.5 (22,5 см.)</option>
-                    <option value="36">36.5 (23 см.)</option>
+                    <option value="32">32 (20 см.)</option>
                   </>
                 ) : (
                   <>

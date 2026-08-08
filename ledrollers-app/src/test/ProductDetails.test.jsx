@@ -72,6 +72,36 @@ describe("ProductDetails component", () => {
         expect(screen.getByText("1")).toBeInTheDocument();
     });
 
+    test("shows only sizes 25 to 32 for products without rollers", async () => {
+        vi.resetModules();
+        vi.doMock("../data/products.js", () => ({
+            products: [
+                {
+                    id: 2,
+                    name: "Тестов Модел Светещи маратонки без колелца",
+                    price: "23.00 €",
+                    oldPrice: "38.00 €",
+                    images: ["img1.png", "img2.png"],
+                    hasRollers: false,
+                },
+            ],
+        }));
+
+        const ProductDetailsWithoutRollers = (await import("../components/ProductDetails.jsx")).default;
+        render(
+            <MemoryRouter initialEntries={["/product/2"]}>
+                <Routes>
+                    <Route path="/product/:id" element={<ProductDetailsWithoutRollers />} />
+                </Routes>
+            </MemoryRouter>
+        );
+
+        const select = screen.getByLabelText("Изберете размер");
+        const options = Array.from(select.options).map((option) => option.value);
+
+        expect(options).toEqual(["", "25", "26", "27", "28", "29", "30", "31", "32"]);
+    });
+
     test("shows an error message when trying to order with empty form", () => {
         renderWithRouter(1);
 
