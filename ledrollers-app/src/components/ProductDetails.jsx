@@ -13,6 +13,12 @@ export default function ProductDetails() {
 
   const [currentImage, setCurrentImage] = useState(0);
 
+  const sizeOptions = product.sizes
+    ? product.sizes.map((s) => String(s))
+    : product.hasRollers === false
+    ? ["25", "26", "27", "28", "29", "30", "31", "32"]
+    : ["30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40"];
+
   const scrollToImage = (index) => {
     setCurrentImage(index);
     if (sliderRef.current) {
@@ -328,32 +334,9 @@ export default function ProductDetails() {
                 onChange={(e) => setFormData({ ...formData, size: e.target.value })}
               >
                 <option value="">-- Изберете размер (стелка в см.) --</option>
-                {product.hasRollers === false ? (
-                  <>
-                    <option value="25">25 (16.5 см.)</option>
-                    <option value="26">26 (17 см.)</option>
-                    <option value="27">27 (17.5 см.)</option>
-                    <option value="28">28 (18 см.)</option>
-                    <option value="29">29 (18.5 см.)</option>
-                    <option value="30">30 (19 см.)</option>
-                    <option value="31">31 (19,5 см.)</option>
-                    <option value="32">32 (20 см.)</option>
-                  </>
-                ) : (
-                  <>
-                <option value="30">30 (19 см.)</option>
-                <option value="31">31 (19,5 см.)</option>
-                <option value="32">32 (20 см.)</option>
-                <option value="33">33 (20,5 см.)</option>
-                <option value="34">34 (21 см.)</option>
-                <option value="35">35 (21,5 см.)</option>
-                <option value="36">36 (22 см.)</option>
-                <option value="37">37 (23 см.)</option>
-                <option value="38">38 (24 см.)</option>
-                <option value="39">39 (25 см.)</option>
-                <option value="40">40 (26 см.)</option>
-                </>
-                )}
+                {sizeOptions.map((s) => (
+                  <option key={s} value={s}>{s}</option>
+                ))}
               </select>
               {errors.size && (
                 <span className="error-text">{errors.size}</span>
