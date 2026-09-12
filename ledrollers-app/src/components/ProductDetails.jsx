@@ -13,11 +13,13 @@ export default function ProductDetails() {
 
   const [currentImage, setCurrentImage] = useState(0);
 
-  const sizeOptions = product.sizes
+  const sizeOptions = product?.sizes
     ? product.sizes.map((s) => String(s))
-    : product.hasRollers === false
+    : product && product.hasRollers === false
     ? ["25", "26", "27", "28", "29", "30", "31", "32"]
-    : ["30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40"];
+    : product
+    ? ["30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40"]
+    : [];
 
   const scrollToImage = (index) => {
     setCurrentImage(index);
@@ -212,20 +214,36 @@ export default function ProductDetails() {
           </p>
           {product.hasRollers !== false && !isAutoRoller && (
             <>
-              <p className="list-title"><strong>Комплектът включва:</strong></p>
-              <ul>
-                <li>🔸 USB кабел за зареждане на маратонките</li>
-                <li>🔸 2 бр. колелца</li>
-                <li>🔸 2 бр. предпазни тапички (за ползване без колелца)</li>
-                <li>🔸 1 бр. специална лопатка за изваждане на колелцата</li>
-              </ul>
+              <p className="list-title"><strong>Описание:</strong></p>
+              {product.id === 10 ? (
+                <ul>
+                  <li>🔸 Колелцата <strong>светят</strong> при движение на кънките</li>
+                  <li>🔸 Атрактивен и цветен дизайн тип Soy Luna</li>
+                  <li>🔸 Стабилни и удобни за каране</li>
+                  <li>🔸 Подходящи както за начинаещи, така и за по-напреднали любители на ролковите кънки</li>
+                </ul>
+              ) : (
+                <ul>
+                  <li>🔸 LED светлини при движение на колелцата</li>
+                  <li>🔸 Подходящ и хубав дизайн на опаковачната кутия</li>
+                   <li>🔸 Чудесна идея за подарък</li>
+                </ul>
+              )}
               <p className="list-title"><strong>Защо да изберете този модел?</strong></p>
-              <ul>
-                <li>🔸 Високо качество на изработка</li>
-                <li>🔸 Лесно зареждане с USB кабел</li>
-                <li>🔸 Удобни за ежедневно носене като стандартни маратонки</li>
-                <li>🔸 Модерен и стилен дизайн</li>
-              </ul>
+              {product.id === 10 ? (
+                <ul>
+                  <li>🔸 LED светлини при движение на колелцата</li>
+                  <li>🔸 Подходящ и хубав дизайн на опаковъчната кутия</li>
+                  <li>🔸 Чудесна идея за подарък</li>
+                </ul>
+              ) : (
+                <ul>
+                  <li>🔸 Високо качество на изработка</li>
+                  <li>🔸 Лесно зареждане с USB кабел</li>
+                  <li>🔸 Удобни за ежедневно носене като стандартни маратонки</li>
+                  <li>🔸 Модерен и стилен дизайн</li>
+                </ul>
+              )}
 
               <p className="learn-more-link">
                 💡 За въпроси относно поставяне на колелцата, можете да посетите секция <Link to="/about">"Научи повече"</Link>.

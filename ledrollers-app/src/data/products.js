@@ -23,6 +23,9 @@ import lightShoesBoy1 from "../assets/LedShoesWithoutRollers/lightShoesBoy1.jpeg
 import lightShoesBoy2 from "../assets/LedShoesWithoutRollers/lightShoesBoy2.jpeg";
 import lightShoesBoy3 from "../assets/LedShoesWithoutRollers/lightShoesBoy3.jpeg";
 import lightShoesBoy4 from "../assets/LedShoesWithoutRollers/lightShoesBoy4.jpeg";
+import skates from "../assets/rollerSkates/skates.png";
+import skates1 from "../assets/rollerSkates/skates1.png";
+import lightSkates from "../assets/rollerSkates/lightSkatess.png";
 
 export const products = [
   {
@@ -111,5 +114,17 @@ export const products = [
     category: "boy",
     isNew: true,
     hasRollers: false,
+  }
+,
+  {
+    id: 10,
+    name: "Светещи ролкови кънки",
+    price: "35.00 €",
+    oldPrice: "55.00 €",
+    images: [lightSkates,skates, skates1],
+    sizes: [34, 35, 36, 37, 38],
+    category: "unisex",
+    description: "Ролкови кънки Soy Luna светещи при движение на колелцата.",
+    isNew: true,
   }
 ];

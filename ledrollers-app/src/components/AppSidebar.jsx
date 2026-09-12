@@ -48,6 +48,7 @@ export function AppSidebar() {
                   <SidebarMenuButton size="text-sm" asChild>
                     <Link to="/products" className="text-lg md:text-base" onClick={closeSidebar}>Всички модели</Link>
                   </SidebarMenuButton>
+                  
                   <Collapsible open={isShoeTypesOpen} onOpenChange={setIsShoeTypesOpen}>
                     <CollapsibleTrigger asChild>
                       <SidebarMenuButton size="text-sm" className="w-full">
@@ -67,9 +68,14 @@ export function AppSidebar() {
                   <SidebarMenuButton size="text-sm" asChild>
                     <Link to="/products/non-light-shoes" onClick={closeSidebar}>Светещи маратонки без колелца</Link>
                   </SidebarMenuButton>
+                  <SidebarMenuButton size="text-sm" asChild>
+                    <Link to="/product/10" onClick={closeSidebar}>Светещи ролкови кънки</Link>
+                  </SidebarMenuButton>
                 </CollapsibleContent>
               </Collapsible>
             </SidebarMenuItem>
+
+            
 
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
@@ -84,6 +90,8 @@ export function AppSidebar() {
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
+
+            
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
