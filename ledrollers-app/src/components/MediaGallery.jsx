@@ -7,6 +7,9 @@ import pinkShoes44 from "../assets/pink_shoes44.png";
 import whiteShoes4 from "../assets/white_shoes4.png";
 import pinkShoes4 from "../assets/pink_shoes4.jpeg";
 import blueShoes4 from "../assets/blue_shoes4.jpeg";
+import skates from "../assets/rollerSkates/skates.png";
+import skates1 from "../assets/rollerSkates/skates1.png";
+import lightSkates from "../assets/rollerSkates/lightSkatess.png";
 
 const MediaGallery = () => {
 

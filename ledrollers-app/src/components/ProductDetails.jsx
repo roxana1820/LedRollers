@@ -245,9 +245,11 @@ export default function ProductDetails() {
                 </ul>
               )}
 
-              <p className="learn-more-link">
-                💡 За въпроси относно поставяне на колелцата, можете да посетите секция <Link to="/about">"Научи повече"</Link>.
-              </p>
+              {product.id !== 10 && (
+                <p className="learn-more-link">
+                  💡 За въпроси относно поставяне на колелцата, можете да посетите секция <Link to="/about">"Научи повече"</Link>.
+                </p>
+              )}
             </>
           )}
 

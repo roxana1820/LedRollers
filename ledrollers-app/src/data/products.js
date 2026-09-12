@@ -42,7 +42,7 @@ export const products = [
     price: "38.00 €",
     oldPrice: "55.00 €",
     images: [blackShoes4,blackShoesSide,blackShoes],
-    isNew: true,
+    isNew: false,
     category: "boy",
   },
   {
@@ -61,7 +61,7 @@ export const products = [
     oldPrice: "80.00 €",
     images: [pinkShoes4,pinkShoes60,pinkShoes602,pinkShoes4New],
     sizes: [34, 35, 36, 37, 38, 39, 40],
-    isNew: true,
+    isNew: false,
     category: "girl",
   },
   {
@@ -71,7 +71,7 @@ export const products = [
     oldPrice: "80.00 €",
     images: [blueShoes4,blueShoes60],
     sizes: [34, 35, 36, 37, 38, 39, 40],
-    isNew: true,
+    isNew: false,
     category: "boy",
   },
   {

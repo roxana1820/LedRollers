@@ -9,6 +9,12 @@ const FeaturedProducts = () => {
     const scrollRef = useRef(null);
     const navigate = useNavigate();
 
+    const orderedProducts = (() => {
+        const skate = products.find(p => p.id === 10);
+        if (!skate) return products;
+        return [skate, ...products.filter(p => p.id !== 10)];
+    })();
+
     useEffect(() => {
         const updateVisible = () => {
             if (window.innerWidth >= 900) setVisible(3);
@@ -49,12 +55,12 @@ const FeaturedProducts = () => {
     };
 
     const prev = () => {
-        const nextIndex = currentIndex <= 0 ? products.length - visible : currentIndex - 1;
+        const nextIndex = currentIndex <= 0 ? orderedProducts.length - visible : currentIndex - 1;
         scrollTo(nextIndex);
     };
 
     const next = () => {
-        const nextIndex = currentIndex >= products.length - visible ? 0 : currentIndex + 1;
+        const nextIndex = currentIndex >= orderedProducts.length - visible ? 0 : currentIndex + 1;
         scrollTo(nextIndex);
     };
 
@@ -75,7 +81,7 @@ const FeaturedProducts = () => {
                     onScroll={handleScroll}
                 >
                     <div className="featured-products-track">
-                        {products.map((product) => (
+                        {orderedProducts.map((product) => (
                             <div
                                 className="featured-products-card"
                                 key={product.id}
@@ -104,8 +110,8 @@ const FeaturedProducts = () => {
             </div>
 
             <div className="featured-products-dots">
-                {products.map((_, i) => (
-                    i <= products.length - visible && (
+                {orderedProducts.map((_, i) => (
+                    i <= orderedProducts.length - visible && (
                         <button
                             key={i}
                             onClick={() => scrollTo(i)}
